@@ -22,6 +22,10 @@ public class User {
         this.role = role;
     }
 
+    public User(String email, String password, String firstname, String lastname, int phonenumber) {
+
+    }
+
     public int getUserId() {
         return UserId;
     }
