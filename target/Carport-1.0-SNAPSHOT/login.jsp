@@ -6,24 +6,57 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Login
+             Velkommen hos Fog
     </jsp:attribute>
 
     <jsp:attribute name="footer">
             Login
     </jsp:attribute>
 
-    <jsp:body>
+        <jsp:body>
+            <div class="h-48 p-5 bg-light border rounded-3 mt-2">
 
-        <h3>You can log in here</h3>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <form method="post" action="login">
+                            <div class="mb-2">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="Email" name="Email" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <p> Glemt password? Klik <a href="forgottenpassword.jsp">her</a></p>
+                            <button type="submit" class="btn btn-info">Login</button>
+                        </form><br/>
+                        <p> Er du ikke oprettet hos Fog, så fortsæt venligst her for at oprette dig som <a href="register.jsp">ny kunde</a></p>
+                    </div>
+                </div>
+            </div>
 
-        <form action="login" method="post">
-            <label for="username">Username: </label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="password"/>
-            <input type="submit"  value="Log in"/>
-        </form>
+            <div style="float: right;margin-right: 100px;;" class="h-48 p-5 bg-light border rounded-3 mt-2">
 
-    </jsp:body>
+                    <h5>Log venligst ind for at kunne bestille samt<br> se din nuværende ordre hos Fog. </h5>
+
+
+                </div>
+            </div>
+
+
+
+            <%--     <form action="login" method="post">
+                     <label for="username">Username: </label>
+                     <input type="text" id="username" name="username"/>
+                     <label for="password">Password: </label>
+                     <input type="password" id="password" name="password"/>
+                     <input type="submit"  value="Log in"/>
+                 </form>--%>
+
+
+
+
+        </jsp:body>
+
 </t:pagetemplate>

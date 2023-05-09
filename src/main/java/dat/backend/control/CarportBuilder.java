@@ -8,20 +8,22 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "Register", value = "/Register")
-public class Register extends HttpServlet {
-
+@WebServlet(name = "Index", value = "/Index")
+public class CarportBuilder extends HttpServlet {
+    
     private ConnectionPool connectionPool;
 
+    private static Order currentOrder;
 
     @Override
     public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
+        currentOrder = new Order();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+
     }
 
     @Override
