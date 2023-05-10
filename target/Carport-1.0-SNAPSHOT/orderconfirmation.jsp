@@ -78,7 +78,7 @@ Ordrebekræftelse
                     </div>
                 </div>
             </div>
-        <div class="container-fluid margin-right:auto">
+        <div class="container py-4">
             <div class="col-md-3 ">
                 <div class="h-48 p-5 bg-light border rounded-3 mt-2">
                     <ul class="list-group mb-3">
