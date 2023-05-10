@@ -16,7 +16,6 @@ public class Register extends HttpServlet {
 
     private ConnectionPool connectionPool;
 
-    //test
 
     @Override
     public void init() throws ServletException {
@@ -26,7 +25,6 @@ public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("index.jsp");
-
     }
 
     @Override
