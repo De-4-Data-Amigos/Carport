@@ -34,3 +34,11 @@ th, td {
     --bs-purple: #6f42c1;
 }
 
+p.italic {
+    font-style: italic;
+}
+
+.link-black {
+    color: inherit;
+    text-decoration: none;
+}

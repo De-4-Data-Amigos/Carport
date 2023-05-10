@@ -6,23 +6,30 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Velkommen hos Fog
+
     </jsp:attribute>
 
     <jsp:attribute name="footer">
             Login
     </jsp:attribute>
 
+
         <jsp:body>
+
             <div class="h-48 p-5 bg-light border rounded-3 mt-2">
 
-            <div class="container">
+
+
+
+                <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-4">
                         <form method="post" action="login">
                             <div class="mb-2">
+                                <p><em>Log venligst ind for at kunne bestille samt<br> se din nuværende ordre hos Fog. </em></p>
                                 <label for="Email" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="Email" name="Email" required>
+
                             </div>
                             <div class="mb-2">
                                 <label for="password" class="form-label">Password</label>
@@ -31,19 +38,17 @@
                             <p> Glemt password? Klik <a href="forgottenpassword.jsp">her</a></p>
                             <button type="submit" class="btn btn-info">Login</button>
                         </form><br/>
-                        <p> Er du ikke oprettet hos Fog, så fortsæt venligst her for at oprette dig som <a href="register.jsp">ny kunde</a></p>
+                        <p>Er du ikke oprettet hos Fog, så fortsæt venligst her for at oprette dig som <a href="register.jsp">ny kunde</a></p>
                     </div>
                 </div>
             </div>
 
-            <div style="float: right;margin-right: 100px;;" class="h-48 p-5 bg-light border rounded-3 mt-2">
-
-                    <h5>Log venligst ind for at kunne bestille samt<br> se din nuværende ordre hos Fog. </h5>
+           <%-- <div style="position:relative; right:200px; top:2px;" class="h-48 p-5 bg-light border rounded-3 mt-2">
+           <h5>Log venligst ind for at kunne bestille samt<br> se din nuværende ordre hos Fog. </h5>--%>
+            </div>
 
 
                 </div>
-            </div>
-
 
 
             <%--     <form action="login" method="post">
