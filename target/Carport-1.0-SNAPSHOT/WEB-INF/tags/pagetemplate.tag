@@ -76,7 +76,7 @@
 
         </div>
         <div class="col text-end">
-            <img src="/images/logo.svg" alt="Fog logo" width="100px;" class="img-fluid"/> <br/>
+            <img src="${pageContext.request.contextPath}/images/logo.svg" alt="Fog logo" width="50px;" class="img-fluid"/> <br/>
             <b>Johannes Fog A/S</b><br/>
             Firskovvej 20<br/>
             2800 Lyngby<br/>
