@@ -21,17 +21,28 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
+                <img src="${pageContext.request.contextPath}/images/logo.svg" width="100px;" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/carportbuilder.jsp"><b>Carport</b></a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/bolig-design" target="_blank"> Bolig & design</a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/byggematerialer" target="_blank">Byggematerialer</a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/el-belysning/"target="_blank">El & belysning</a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/have-fritid"target="_blank">Have & fritid</a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/vaerktoej"target="_blank">Værktøj</a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/maling"target="_blank">Maling</a>
+                    <a class="nav-item nav-link" href="https://www.johannesfog.dk/restmarked"target="_blank">RESTMARKED</a>
+                    <a class="nav-item nav-link" href="https://fogpro.johannesfog.dk/pro"target="_blank">Erhverv</a>
+                </div>
+                <!-- target="_blank" betyder at den vil åbne siden på en ny fane-->
+            </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Dette er en test</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
@@ -52,18 +63,25 @@
 <!-- Footer -->
 <div class="container mt-3">
     <hr/>
-    <div class="row mt-4">
-        <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+    <div class="row mt-3">
+        <div class="col text-start">
+            <b>Kundeservice</b><br/>
+            <a class="link-black" href="https://www.johannesfog.dk/om-fog/forretninger/kontakt" target="_blank">Kontakt Fog</a><br/>
+            <a class="link-black" href="https://www.johannesfog.dk/om-fog/kundeservice/fortrydelse-og-returnering" target="_blank">Fortrydelse og returnering</a>
         </div>
-        <div class="col">
-            <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
+        <div class="col text-center">
+            <b>Om Fog</b><br/>
+            <a class="link-black" href="https://www.johannesfog.dk/om-fog/forretninger" target="_blank">Åbningstider</a><br/>
+            <a class="link-black" href="https://www.johannesfog.dk/om-fog" target="_blank">Om Fog</a>
+
         </div>
-        <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester efterår 2022
+        <div class="col text-end">
+            <img src="/images/logo.svg" alt="Fog logo" width="100px;" class="img-fluid"/> <br/>
+            <b>Johannes Fog A/S</b><br/>
+            Firskovvej 20<br/>
+            2800 Lyngby<br/>
+            CVR-nr. 16314439
+
         </div>
     </div>
 
