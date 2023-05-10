@@ -31,18 +31,18 @@
                 <select class="form-select" style="color: #6f42c1; width: 600px; text-align-last: center;" aria-label="Default select example" name="width">
                     <option selected>Carport bredde</option>
                     <option value="240"> 240 cm </option>
-                    <option value="240"> 270 cm </option>
-                    <option value="240"> 300 cm </option>
-                    <option value="240"> 330 cm </option>
-                    <option value="240"> 360 cm </option>
-                    <option value="240"> 390 cm </option>
-                    <option value="240"> 420 cm </option>
-                    <option value="240"> 450 cm </option>
-                    <option value="240"> 480 cm </option>
-                    <option value="240"> 510 cm </option>
-                    <option value="240"> 540 cm </option>
-                    <option value="240"> 570 cm </option>
-                    <option value="240"> 600 cm </option>
+                    <option value="270"> 270 cm </option>
+                    <option value="300"> 300 cm </option>
+                    <option value="330"> 330 cm </option>
+                    <option value="360"> 360 cm </option>
+                    <option value="390"> 390 cm </option>
+                    <option value="420"> 420 cm </option>
+                    <option value="450"> 450 cm </option>
+                    <option value="480"> 480 cm </option>
+                    <option value="510"> 510 cm </option>
+                    <option value="540"> 540 cm </option>
+                    <option value="570"> 570 cm </option>
+                    <option value="600"> 600 cm </option>
 
                 </select>
 
@@ -50,23 +50,23 @@
                 <select class="form-select" style="color: #6f42c1; width: 600px; text-align-last: center;" aria-label="Default select example" name="length">
                     <option selected>Carport længde</option>
                     <option value="240"> 240 cm </option>
-                    <option value="240"> 270 cm </option>
-                    <option value="240"> 300 cm </option>
-                    <option value="240"> 330 cm </option>
-                    <option value="240"> 360 cm </option>
-                    <option value="240"> 390 cm </option>
-                    <option value="240"> 420 cm </option>
-                    <option value="240"> 450 cm </option>
-                    <option value="240"> 480 cm </option>
-                    <option value="240"> 510 cm </option>
-                    <option value="240"> 540 cm </option>
-                    <option value="240"> 570 cm </option>
-                    <option value="240"> 600 cm </option>
-                    <option value="240"> 630 cm </option>
-                    <option value="240"> 660 cm </option>
-                    <option value="240"> 690 cm </option>
-                    <option value="240"> 750 cm </option>
-                    <option value="240"> 780 cm </option>
+                    <option value="270"> 270 cm </option>
+                    <option value="300"> 300 cm </option>
+                    <option value="330"> 330 cm </option>
+                    <option value="360"> 360 cm </option>
+                    <option value="390"> 390 cm </option>
+                    <option value="420"> 420 cm </option>
+                    <option value="450"> 450 cm </option>
+                    <option value="480"> 480 cm </option>
+                    <option value="510"> 510 cm </option>
+                    <option value="540"> 540 cm </option>
+                    <option value="570"> 570 cm </option>
+                    <option value="600"> 600 cm </option>
+                    <option value="630"> 630 cm </option>
+                    <option value="660"> 660 cm </option>
+                    <option value="690"> 690 cm </option>
+                    <option value="750"> 750 cm </option>
+                    <option value="780"> 780 cm </option>
                 </select>
                 <br>
 

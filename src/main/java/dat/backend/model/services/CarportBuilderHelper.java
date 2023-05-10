@@ -9,7 +9,7 @@ public class CarportBuilderHelper {
 
 //TODO her skal vi generate vores stykliste.
     public static List<ItemEntry> generateItemList(int width, int length, Order order) {
-
+        return null;
     }
 
     public static float startPrice(){
