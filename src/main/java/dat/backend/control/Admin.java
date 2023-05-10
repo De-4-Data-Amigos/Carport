@@ -28,17 +28,14 @@ public class Admin extends HttpServlet {
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
                 List<User> users = null;
-                List<Order> orders = null;
                 try {
                     users = AdminFacade.getAllUsers(connectionPool);
 
-                } catch (DatabaseException e)
-                {
+                } catch (DatabaseException e) {
                     request.setAttribute("errormessage", e.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
                 request.setAttribute("userList", users);
-                request.setAttribute("orderList",orders);
                 request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
 
             }
@@ -49,17 +46,23 @@ public class Admin extends HttpServlet {
 
     }
 
-}
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
 
-            request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
+        User user = (User) request.getSession().getAttribute("user");
+        if (!user.getRole().equalsIgnoreCase("admin")) {
 
-        } catch (DatabaseException e) {
-            request.setAttribute("errormessage", e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            request.setAttribute("besked", "du er ikke en admin");
+            request.getRequestDispatcher("index").forward(request, response);
+
+        }
+
+        // Hvad skal admin kunne gøre, og hvordan vil man have det til at se ud?
+        // Vi skal have tilføjet metoder til hvad man skal her - for inspiration kig cupcake
+
+
+        response.sendRedirect("admin");
         }
     }
-}
