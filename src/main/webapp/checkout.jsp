@@ -43,7 +43,7 @@ Ordrebekræftelse
                             <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>test</td>
+                                <td>test/td>
                                 <td>test</td>
                                 <td>test</td>
                             </tr>
