@@ -12,8 +12,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Admin", value = "/admin")
-public class Admin extends HttpServlet {
+@WebServlet(name = "AdminUsers", value = "/admin-users")
+public class AdminUsers extends HttpServlet {
 
     private ConnectionPool connectionPool;
 
@@ -36,7 +36,7 @@ public class Admin extends HttpServlet {
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
                 request.setAttribute("userList", users);
-                request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/admin-users.jsp").forward(request, response);
 
             }
         }
@@ -63,6 +63,6 @@ public class Admin extends HttpServlet {
         // Vi skal have tilføjet metoder til hvad man skal her - for inspiration kig cupcake
 
 
-        response.sendRedirect("admin");
+        response.sendRedirect("admin-users");
         }
     }

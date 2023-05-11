@@ -17,7 +17,10 @@
     <jsp:body>
 
         <h1>Admin Users</h1>
-
+        
+        <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+        </form>
 
     </jsp:body>
 
