@@ -20,16 +20,13 @@ public class AdminMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int userId = rs.getInt("userid");
+                    int userId = rs.getInt("user_id");
                     String email= rs.getString("email");
                     String password = rs.getString("password");
                     String firstname = rs.getString("firstname");
                     String lastname = rs.getString("lastname");
                     int phoneNumber = rs.getInt("phonenumber");
                     String role = rs.getString("role");
-
-
-
 
                     User user = new User(userId, email, password, firstname, lastname, phoneNumber, role);
                     userList.add(user);

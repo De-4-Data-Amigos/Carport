@@ -1,7 +1,5 @@
 package dat.backend.model.entities;
 
-import dat.backend.control.Product;
-
 public class ProductVariant {
 private int id;
 private int productId;
