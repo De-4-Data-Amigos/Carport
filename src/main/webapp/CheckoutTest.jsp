@@ -13,7 +13,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Checkout - bekræft venligst din bestilling
+         Checkout
     </jsp:attribute>
 
     <jsp:body>
@@ -24,7 +24,7 @@
                 <div class="col-md-8">
                     <div class="h-100 p-5 bg-light border rounded-3">
 
-                        <h2>Din kurv </h2>
+                        <h2>Bekræft venligst indholdet i din kurv</h2>
                         <form method="post">
                             <table class="table table-striped mt-4">
                                 <thead>
@@ -41,7 +41,7 @@
 
 
                                     <tr>
-                                        <td class="text-start align-middle"> Carport, fladt tag </td>
+                                        <td class="text-start align-middle"><img src="images/Carport.png" width="120px;" class="img-fluid align-left"/> Carport, fladt tag </td>
                                         <td class="text-center align-middle">${requestScope.width}cm x ${requestScope.length}cm</td>
                                         <td class="text-center align-middle">${requestScope.getPrice}</td>
                                         <td class="text-end"></td>
@@ -61,7 +61,7 @@
                             </table>
                         </form>
 
-                        <h5><em>En ordrebekræftelse sendes til din email.</em></h5>
+                        <p><em>En ordrebekræftelse sendes til din email.</em></p>
 
                     </div>
 
@@ -69,9 +69,9 @@
                 <div class="col-md-4">
                     <div class="h-48 p-5 bg-light border rounded-3">
                         <h5>Har du brug for hjælp?</h5><br>
-                        <div class="col text-end">
-                            <img src="images/mail.png" width="30px;" class="img-fluid align-left"/><p><em>Kontakt@Fog.dk</em></p>
-                            <img src="images/tlf.png" width="30px;" class="img-fluid align-left"/><p>+45 40404040</p>
+                        <div class="col">
+                            <p><img src="images/mail.png" width="35px;" class="img-fluid align-left"/><em>   Kontakt@Fog.dk</em></p>
+                           <p><img src="images/tlf.png" width="35px;" class="img-fluid align-left"/><em>  +45 40404040</em></p>
                             <p><em>Bemærk at der <b>altid</b> er gratis fragt hos Fog!</em></p>
                         </div>
                     </div>

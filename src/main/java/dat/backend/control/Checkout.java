@@ -1,5 +1,6 @@
 package dat.backend.control;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Order;
 import dat.backend.model.entities.User;
@@ -29,7 +30,7 @@ public class Checkout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        Order order = (Order)session.getAttribute("");
+        MysqlxCrud.Order order = (MysqlxCrud.Order)session.getAttribute("");
 
     }
 
