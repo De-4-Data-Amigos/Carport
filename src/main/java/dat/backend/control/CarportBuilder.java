@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "Carportbuilder", value = "/carportbuilder")
-public class Carportbuilder extends HttpServlet {
+public class CarportBuilder extends HttpServlet {
 
     private ConnectionPool connectionPool;
 
