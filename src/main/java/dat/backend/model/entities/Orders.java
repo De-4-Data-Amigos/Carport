@@ -1,5 +1,11 @@
 package dat.backend.model.entities;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
+import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.OrderFacade;
+
+import java.sql.Connection;
 import java.sql.Timestamp;
 
 public class Orders {
@@ -21,6 +27,18 @@ public class Orders {
         this.length = length;
         this.width = width;
     }
+
+    public Orders(int length, int width, User user, ConnectionPool connectionPool) throws DatabaseException {
+        this.length = length;
+        this.width = width;
+        this.price = 0;
+        user_id = user.getUserId();
+
+        id = OrderFacade.createOrder(this, connectionPool);
+
+    }
+
+
 
     public int getId() {
         return id;
