@@ -27,7 +27,7 @@
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup"> <!-- dobbelt id navbar? -->
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/carportbuilder.jsp"><b>Carport</b></a>
                     <a class="nav-item nav-link" href="https://www.johannesfog.dk/bolig-design" target="_blank"> Bolig & design</a>
@@ -48,6 +48,13 @@
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                    </c:if>
+
+                    <c:if test="${sessionScope.user.role.equalsIgnoreCase(\"admin\")}">
+                        <div class="position-absolute top-50 end-0 mt-4">
+                            <a href="admin">
+                                <h5> ${sessionScope.user.role}</h5></a>
+                        </div>
                     </c:if>
                 </div>
             </div>

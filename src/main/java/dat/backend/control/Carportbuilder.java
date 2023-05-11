@@ -39,6 +39,7 @@ public class Carportbuilder extends HttpServlet {
         int width = Integer.parseInt(widthString);
         int length = Integer.parseInt(lengthString);
         User user = (User) request.getSession().getAttribute("user");
+
         Orders order = null;
         try {
             order = new Orders(width, length, user, connectionPool);
@@ -46,6 +47,7 @@ public class Carportbuilder extends HttpServlet {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
+
         List<ItemEntry> itemEntryList = CarportBuilderHelper.generateItemList(width, length, order);
         request.setAttribute("itemList", itemEntryList);
         request.getRequestDispatcher("checkout").forward(request,response);
