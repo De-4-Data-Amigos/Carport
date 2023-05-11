@@ -1,6 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.ItemEntry;
+import dat.backend.model.entities.Orders;
 import dat.backend.model.entities.User;
 import dat.backend.model.services.CarportBuilderHelper;
 
@@ -27,7 +28,7 @@ public class Carportbuilder extends HttpServlet {
         int width = Integer.parseInt(widthString);
         int length = Integer.parseInt(lengthString);
         User user = (User) request.getSession().getAttribute("user");
-        Order order = new Order(width, length, user);
+        Orders order = new Orders(width, length, user);
         List<ItemEntry> itemEntryList = CarportBuilderHelper.generateItemList(width, length, order);
         request.setAttribute("itemList", itemEntryList);
         request.getRequestDispatcher("checkout").forward(request,response);
