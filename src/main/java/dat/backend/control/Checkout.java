@@ -2,7 +2,7 @@ package dat.backend.control;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.Order;
+import dat.backend.model.entities.Orders;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.AdminFacade;
@@ -30,7 +30,7 @@ public class Checkout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        MysqlxCrud.Order order = (MysqlxCrud.Order)session.getAttribute("");
+        Orders order = (Orders)session.getAttribute("");
 
     }
 

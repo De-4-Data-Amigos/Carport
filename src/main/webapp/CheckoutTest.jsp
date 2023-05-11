@@ -76,7 +76,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-info">Bekræft bestilling</button>
+                    <button type="submit" class="btn btn-info margin-top">Bekræft bestilling</button>
 
 
                     <%-- <div class="h-48 p-5 bg-light border rounded-3 mt-2">

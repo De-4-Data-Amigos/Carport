@@ -22,7 +22,10 @@ Ordrebekræftelse
 
     <jsp:body>
 
-        <div class="container py-4">
+       <%--                     Vi bruger Checkouttest.jsp :-))))
+
+
+       <div class="container py-4">
 
         <div class="row align-items-md-stretch">
             <div class="col-md-6">
@@ -90,7 +93,7 @@ Ordrebekræftelse
                 </div>
             </div>
         </div>
-
+--%>
     </jsp:body>
 
 </t:pagetemplate>
