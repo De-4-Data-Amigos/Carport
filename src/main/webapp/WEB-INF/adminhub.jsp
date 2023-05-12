@@ -19,7 +19,8 @@
 
         <h1>Admin Hub</h1>
         <div>
-            <a href="${pageContext.request.contextPath}/admin-users"><b>Admin users</b></a>
+            <a href="${pageContext.request.contextPath}/admin-users"><b>Admin users</b></a><br/>
+            <a href="${pageContext.request.contextPath}/admin-orders"><b>Admin orders</b></a>
         </div>
     </jsp:body>
 

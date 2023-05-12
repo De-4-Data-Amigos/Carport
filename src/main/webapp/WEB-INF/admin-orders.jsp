@@ -10,13 +10,13 @@
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Admin Users
+            Admin Orders
     </jsp:attribute>
 
 
     <jsp:body>
 
-        <h1>Admin Users</h1>
+        <h1>Admin Orders</h1>
 
         <form>
             <input type="button" value="Go back!" onclick="history.back()">
