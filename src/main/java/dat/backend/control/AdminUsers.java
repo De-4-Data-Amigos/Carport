@@ -41,28 +41,33 @@ public class AdminUsers extends HttpServlet {
             }
         }
 
-        request.setAttribute("besked", "du er ikke en admin");
-        request.getRequestDispatcher("index").forward(request, response);
+        request.setAttribute("errormessage", "Du er ikke en admin");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
 
     }
-
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        User user = (User) request.getSession().getAttribute("user");
-        if (!user.getRole().equalsIgnoreCase("admin")) {
-
-            request.setAttribute("besked", "du er ikke en admin");
+        User _user = (User) request.getSession().getAttribute("user");
+        if (!_user.getRole().equalsIgnoreCase("admin")) {
+            request.setAttribute("besked", "Du er ikke en admin");
             request.getRequestDispatcher("index").forward(request, response);
 
         }
 
-        // Hvad skal admin kunne gøre, og hvordan vil man have det til at se ud?
-        // Vi skal have tilføjet metoder til hvad man skal her - for inspiration kig cupcake
+        try {
+            List<User> userList = AdminFacade.getAllUsers(connectionPool);
+
+            request.setAttribute("userList", userList); // Gem brugerlisten i request
+            request.getRequestDispatcher("admin-users.jsp").forward(request, response);
+
+        } catch (DatabaseException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
 
 
         response.sendRedirect("admin-users");
-        }
     }
+}

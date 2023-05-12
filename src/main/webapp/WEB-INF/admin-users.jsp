@@ -16,9 +16,9 @@
 
 
     <jsp:body>
-        <h1>Admin Users</h1>
 
         <div class="container">
+            <h1>Admin Users</h1>
             <div class="row justify-content-end">
                 <div class="col-md-6">
                     <form>
@@ -29,6 +29,23 @@
                 </div>
             </div>
         </div>
+
+
+        <table class="table table-striped mt-4">
+            <!--   <th>
+               <td class="text-start">Name</td>
+               <td class="text-center">Date created</td>
+               <td class="text-end">Actions</td>
+               <th/>
+            -->
+            <c:forEach var="user" items="${requestScope.userList}">
+                    <tr>
+                        <td class="text-start align-middle"> ${user.firstname}</td>
+                        <td class="text-center align-middle">${user.lastname}</td>
+
+                    </tr>
+            </c:forEach>
+        </table>
 
     </jsp:body>
 

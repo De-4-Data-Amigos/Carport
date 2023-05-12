@@ -9,4 +9,6 @@ public class AdminFacade {
     public static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException {
         return AdminMapper.getAllUsers(connectionPool);
     }
+
+
 }

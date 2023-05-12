@@ -16,9 +16,8 @@
 
     <jsp:body>
 
-        <h1>Admin Orders</h1>
-
         <div class="container">
+            <h1>Admin Orders</h1>
             <div class="row justify-content-end">
                 <div class="col-md-6">
                     <form>
