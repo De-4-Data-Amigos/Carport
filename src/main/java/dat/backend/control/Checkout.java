@@ -31,13 +31,37 @@ public class Checkout extends HttpServlet {
 
         /* Hvad skal Checkout?
         - Vise den ordre, som er blevet sammensat af kunden på forrige side
-        - Trække mål og pris fra databasen
+        - Trække mål og pris fra input fra jsp.siden
         - Kan gå videre til næste side vha. bekræft-bestilling knap på jsp (tjek)
          */
 
+        String widthString = request.getParameter("width");
+        String lengthString = request.getParameter("length");
+
+        int width = Integer.parseInt(widthString);
+        int length = Integer.parseInt(lengthString);
 
         HttpSession session = request.getSession();
         Orders order = (Orders)session.getAttribute("");
+        User user = (User)session.getAttribute("user");
+
+        int orderID;
+
+        try {
+            order = new Orders(width, length, user, connectionPool);
+        } catch (DatabaseException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+
+
+
+
+
+
+            // Tilføje ordren ved at sammensætte de forskellige dele fra den store udregning?
+            //
+
 
 
 

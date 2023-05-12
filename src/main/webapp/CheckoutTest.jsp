@@ -34,7 +34,7 @@
                                     </td>
                                     <td class="text-center align-middle" style="color: #6f42c1"><h5>Mål</h5>
                                     </td>
-                                    <td class="text-center align-middle" style="color: #6f42c1"><h5>Pris</h5>
+                                    <td class="text-center align-middle" style="color: #6f42c1"><h5>Pris*</h5>
                                     </td>
                                 </tr>
                                 </thead>
@@ -62,6 +62,7 @@
                         </form>
 
                         <p><em>En ordrebekræftelse sendes til din email.</em></p>
+                        <p><em>*Bemærk at prisen kan variere 5-10% afhængigt af endelig størrelse.</em></p>
 
                     </div>
 
