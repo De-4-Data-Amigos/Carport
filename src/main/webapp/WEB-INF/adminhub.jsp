@@ -17,11 +17,22 @@
 
     <jsp:body>
 
-        <h1>Admin Hub</h1>
-        <div>
-            <a href="${pageContext.request.contextPath}/admin-users"><b>Admin users</b></a><br/>
-            <a href="${pageContext.request.contextPath}/admin-orders"><b>Admin orders</b></a>
+        <div class="container">
+            <h1 class="text-center">Admin Hub</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <a href="${pageContext.request.contextPath}/admin-users" class="h5"><b>Admin users</b></a><br/>
+                </div>
+                <div class="col-md-auto">
+                    <a href="${pageContext.request.contextPath}/admin-orders" class="h5"><b>Admin orders</b></a><br/>
+                </div>
+                <div class="col-md-auto">
+                    <a href="${pageContext.request.contextPath}/itemlist" class="h5"><b>Item list</b></a><br/>
+                </div>
+            </div>
         </div>
+
+
     </jsp:body>
 
 </t:pagetemplate>

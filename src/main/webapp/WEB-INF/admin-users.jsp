@@ -23,13 +23,13 @@
                 <div class="col-md-6">
                     <form>
                         <div class="text-end">
-                            <input type="button" value="Go back!" onclick="history.back()">
+                            <input type="button" value="Tilbage" onclick="history.back()">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        
+
     </jsp:body>
 
 </t:pagetemplate>

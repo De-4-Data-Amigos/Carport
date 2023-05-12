@@ -18,10 +18,17 @@
 
         <h1>Admin Orders</h1>
 
-        <form>
-            <input type="button" value="Go back!" onclick="history.back()">
-        </form>
-
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <form>
+                        <div class="text-end">
+                            <input type="button" value="Tilbage" onclick="history.back()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </jsp:body>
 
 </t:pagetemplate>
