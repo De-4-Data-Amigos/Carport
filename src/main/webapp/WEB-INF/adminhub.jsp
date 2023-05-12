@@ -30,6 +30,15 @@
                     <a href="${pageContext.request.contextPath}/itemlist" class="h5"><b>Item list</b></a><br/>
                 </div>
             </div>
+            <p>
+                På Admin Hub kan du håndtere brugerkonti og adgangsrettigheder ved at klikke på "Admin users". Dette giver dig mulighed for at oprette, redigere eller slette brugerkonti og administrere, hvilke dele af systemet de har adgang til.<br>
+
+                Hvis du vil administrere ordrer og salg, kan du klikke på "Admin orders". Her kan du se en oversigt over eksisterende ordrer, ændre status for ordrer og håndtere eventuelle problemer eller spørgsmål fra kunder.<br>
+
+                Hvis du har brug for at opdatere eller tilføje nye produkter til systemet, kan du klikke på "Item list". Dette giver dig mulighed for at se en liste over tilgængelige produkter og redigere deres egenskaber, såsom pris eller beskrivelse.<br>
+
+                Admin Hub gør det nemt for dig at udføre administrative opgaver uden at skulle have tekniske færdigheder eller kendskab til programmering. Klik blot på de relevante links for at få adgang til de ønskede funktioner og forenkle din daglige arbejdsgang.<br>
+            </p>
         </div>
 
 

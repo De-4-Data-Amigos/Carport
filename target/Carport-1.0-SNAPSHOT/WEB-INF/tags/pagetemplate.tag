@@ -41,7 +41,7 @@
                 </div>
                 <!-- target="_blank" betyder at den vil åbne siden på en ny fane-->
             </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup"> <!-- dobbelt id navbar? -->
                 <div class="navbar-nav">
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
@@ -51,9 +51,9 @@
                     </c:if>
 
                     <c:if test="${sessionScope.user.role.equalsIgnoreCase(\"admin\")}">
-                        <div class="position-absolute top-50 end-0 mt-4">
+                        <div class="position-absolute mt-4  ms-2 ">
                             <a href="adminhub">
-                                <h5> ${sessionScope.user.role}</h5></a>
+                                <h5> Admin</h5></a>
                         </div>
                     </c:if>
                 </div>
