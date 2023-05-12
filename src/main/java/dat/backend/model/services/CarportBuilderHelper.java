@@ -13,7 +13,13 @@ public class CarportBuilderHelper {
         return null;
     }
 
-    public static float startPrice(){
-        return 0;
+    public static float startPrice(int width, int length){
+        /*  - Vi skal beregne en pris ud fra længde x bredde, som bliver en "start-pris"
+            - .... før kunden rammer salgsteamet for en endelig pris */
+
+        int CustomerChosenArea = width * length;
+        float price = (float) (CustomerChosenArea * 0.08);
+
+        return price;
     }
 }
