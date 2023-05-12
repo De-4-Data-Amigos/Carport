@@ -29,8 +29,17 @@ public class Checkout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /* Hvad skal Checkout?
+        - Vise den ordre, som er blevet sammensat af kunden på forrige side
+        - Trække mål og pris fra databasen
+        - Kan gå videre til næste side vha. bekræft-bestilling knap på jsp (tjek)
+         */
+
+
         HttpSession session = request.getSession();
         Orders order = (Orders)session.getAttribute("");
+
+
 
     }
 
