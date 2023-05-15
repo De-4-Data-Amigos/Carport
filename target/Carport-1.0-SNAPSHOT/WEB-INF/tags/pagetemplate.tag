@@ -39,8 +39,15 @@
                 <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
                     <!-- dobbelt id navbar? -->
                     <div class="navbar-nav">
+                        <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link"
                            href="${pageContext.request.contextPath}/carportbuilderlogin"><b>Carport</b></a>
+                        </c:if>
+                        <c:if test="${sessionScope.user == null }">
+                            <a class="nav-item nav-link"
+                               href="${pageContext.request.contextPath}/login.jsp"><b>Carport</b></a>
+                        </c:if>
+
                         <a class="nav-item nav-link" href="https://www.johannesfog.dk/bolig-design" target="_blank">
                             Bolig &
                             design</a>

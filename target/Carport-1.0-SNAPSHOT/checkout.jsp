@@ -24,11 +24,11 @@
                 <div class="col-md-8">
                     <div class="h-100 p-5 bg-light border rounded-3">
 
-
                         <h2>Din kurv:</h2>
                         <form method="post">
                             <table class="table table-striped mt-4">
                                 <thead>
+
 
                                 <tr>
                                     <td class="text-start align-middle" style="color: #6f42c1"><h5>Type</h5>
@@ -40,7 +40,6 @@
                                 </tr>
                                 </thead>
 
-
                                 <tr>
                                     <td class="text-start align-middle"><img src="images/Carport.png" width="120px;" class="img-fluid align-left"/> Carport, fladt tag </td>
                                     <td class="text-center align-middle">${requestScope.width}cm x ${requestScope.length}cm</td>
@@ -48,19 +47,9 @@
                                     <td class="text-end"></td>
                                 </tr>
 
-
-                                    <%-- <c:forEach var="cupcake" items="${sessionScope.confirm_order.cupcakes}" varStatus="loop">
-                                        <tr>
-                                            <td class="text-start align-middle"> Cupcake #${loop.count} </td>
-                                            <td class="text-center align-middle">${cupcake.cupcakeTopFlavor}</td>
-                                            <td class="text-center align-middle">${cupcake.cupcakeBottomFlavor}</td>
-                                            <td class="text-end">
-                                            </td>
-                                        </tr>
-                                    </c:forEach> --%>
-
                             </table>
                         </form>
+
 
                         <p><em>En ordrebekræftelse sendes til din email.</em></p>
                         <p><em>*Bemærk at prisen vil variere afhængigt af endelig<br> bestilling efter kontakt med salgsafdeling</em></p>
@@ -79,6 +68,8 @@
                     </div>
 
                     <button type="submit" class="btn btn-info margin-top">Bekræft bestilling</button>
+
+                    <p>test</p>
 
                 </div>
             </div>
