@@ -2,6 +2,7 @@ package dat.backend.model.persistence;
 
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.services.RegisterHelper;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -22,7 +23,7 @@ class UserMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, email);
-                ps.setString(2, password);
+                ps.setString(2, RegisterHelper.hashPassword(password));
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
@@ -55,7 +56,7 @@ class UserMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, email);
-                ps.setString(2, password);
+                ps.setString(2, RegisterHelper.hashPassword(password));
                 ps.setString(3, firstname);
                 ps.setString(4,lastname);
                 ps.setInt(5, phonenumber);
