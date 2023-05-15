@@ -24,6 +24,7 @@
                 <div class="col-md-8">
                     <div class="h-100 p-5 bg-light border rounded-3">
 
+
                         <h2>Din kurv:</h2>
                         <form method="post">
                             <table class="table table-striped mt-4">
@@ -78,8 +79,6 @@
                     </div>
 
                     <button type="submit" class="btn btn-info margin-top">Bekræft bestilling</button>
-
-                    <p>test</p>
 
                 </div>
             </div>

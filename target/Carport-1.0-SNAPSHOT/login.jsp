@@ -48,9 +48,6 @@
             </div>
 
 
-                </div>
-
-
             <%--     <form action="login" method="post">
                      <label for="username">Username: </label>
                      <input type="text" id="username" name="username"/>
