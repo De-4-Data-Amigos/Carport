@@ -24,7 +24,7 @@
                 <div class="col-md-8">
                     <div class="h-100 p-5 bg-light border rounded-3">
 
-                        <h2>Bekræft venligst indholdet i din kurv</h2>
+                        <h2>Din kurv:</h2>
                         <form method="post">
                             <table class="table table-striped mt-4">
                                 <thead>
@@ -62,7 +62,7 @@
                         </form>
 
                         <p><em>En ordrebekræftelse sendes til din email.</em></p>
-                        <p><em>*Bemærk at prisen kan variere 5-10% afhængigt af endelig størrelse.</em></p>
+                        <p><em>*Bemærk at prisen vil variere afhængigt af endelig<br> bestilling efter kontakt med salgsafdeling</em></p>
 
                     </div>
 
@@ -79,15 +79,6 @@
 
                     <button type="submit" class="btn btn-info margin-top">Bekræft bestilling</button>
 
-
-                        <%-- <div class="h-48 p-5 bg-light border rounded-3 mt-2">
-                            <div class="h-48 p-5 bg-light border rounded-3 mt-2">
-                                <h5>Vidste du.. </h5>
-                                <h7>.. at Olsker Cupcakes er et lokalt ejet og bæredygtigt bageri?</h7><br>
-                                <h7>.. at vi er et sjette generations bageri med rødder tilbage til forrige århundrede?</h7><br>
-                                <h7>.. at vi udelukkende bruger økologiske råvarer til vores cupcakes?</h7>
-                            </div>
-                        </div> --%>
                 </div>
             </div>
 
