@@ -40,7 +40,7 @@
                     <!-- dobbelt id navbar? -->
                     <div class="navbar-nav">
                         <a class="nav-item nav-link"
-                           href="${pageContext.request.contextPath}/WEB-INF/carportbuilder.jsp"><b>Carport</b></a>
+                           href="${pageContext.request.contextPath}/carportbuilderlogin"><b>Carport</b></a>
                         <a class="nav-item nav-link" href="https://www.johannesfog.dk/bolig-design" target="_blank">
                             Bolig &
                             design</a>
