@@ -47,7 +47,7 @@
                     <td class="text-center align-middle"> ${order.user_id}</td>
                     <td class="text-center align-middle">${order.timestamp}</td>
                     <td class="text-center align-middle">${order.price}</td>
-                    <td class="text-end align-middle">${order.length}</td>
+                    <td class="text-center align-middle">${order.length}</td>
                     <td class="text-end align-middle">${order.width}</td>
                 </tr>
             </c:forEach>
