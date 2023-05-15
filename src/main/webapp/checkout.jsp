@@ -29,6 +29,17 @@
                             <table class="table table-striped mt-4">
                                 <thead>
 
+
+                                <tr>
+                                    <td class="text-start align-middle" style="color: #6f42c1"><h5>Type</h5>
+                                    </td>
+                                    <td class="text-center align-middle" style="color: #6f42c1"><h5>Mål</h5>
+                                    </td>
+                                    <td class="text-center align-middle" style="color: #6f42c1"><h5>Pris*</h5>
+                                    </td>
+                                </tr>
+                                </thead>
+
                                 <tr>
                                     <td class="text-start align-middle" style="color: #6f42c1"><h5>Type</h5>
                                     </td>
@@ -45,10 +56,11 @@
                                     <td class="text-center align-middle">${requestScope.width}cm x ${requestScope.length}cm</td>
                                     <td class="text-center align-middle">${requestScope.getPrice}</td>
                                     <td class="text-end"></td>
-                                </tr>
+                          </tr>
 
                             </table>
                         </form>
+
 
                         <p><em>En ordrebekræftelse sendes til din email.</em></p>
                         <p><em>*Bemærk at prisen vil variere afhængigt af endelig<br> bestilling efter kontakt med salgsafdeling</em></p>

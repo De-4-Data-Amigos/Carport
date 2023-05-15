@@ -49,7 +49,7 @@ class UserMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
-        String sql = "insert into user (email, password, firsname, lastname, phonenumber) values (?,?,?,?,?)";
+        String sql = "insert into user (email, password, firstname, lastname, phonenumber) values (?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
