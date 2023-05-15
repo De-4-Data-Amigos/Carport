@@ -10,15 +10,24 @@
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Admin
+            Admin Orders
     </jsp:attribute>
 
 
     <jsp:body>
 
-      <h1>Admin side</h1>
-
-
+        <div class="container">
+            <h1>Admin Orders</h1>
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <form>
+                        <div class="text-end">
+                            <input type="button" value="Tilbage" onclick="history.back()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </jsp:body>
 
 </t:pagetemplate>
