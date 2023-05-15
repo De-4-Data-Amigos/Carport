@@ -4,6 +4,7 @@ import com.mysql.cj.x.protobuf.MysqlxCrud;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
+import dat.backend.model.services.CarportBuilderHelper;
 
 import java.sql.Connection;
 import java.sql.Timestamp;
@@ -31,7 +32,7 @@ public class Orders {
     public Orders(int length, int width, User user, ConnectionPool connectionPool) throws DatabaseException {
         this.length = length;
         this.width = width;
-        this.price = 0;
+        this.price = CarportBuilderHelper.startPrice(width, length);
         user_id = user.getUserId();
 
         id = OrderFacade.createOrder(this, connectionPool);
