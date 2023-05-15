@@ -27,24 +27,24 @@
                 <div class="col-md-4">
                     <form method="post" action="register">
                         <div class="mb-2">
-                            <label for="username" class="form-label">Fornavn</label>
-                            <input type="text" class="form-control" id="username" name="fornavn" required>
+                            <label for="firstname" class="form-label">Fornavn</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" required>
                         </div>
                         <div class="mb-2">
                             <label for="lastname" class="form-label">Efternavn</label>
-                            <input type="text" class="form-control" id="lastname" name="efternavn" required>
+                            <input type="text" class="form-control" id="lastname" name="lastname" required>
                         </div>
                         <div class="mb-2">
-                            <label for="adress" class="form-label">Adresse</label>
-                            <input type="text" class="form-control" id="adress" name="adresse" required>
+                            <label for="address" class="form-label">Adresse</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
                         </div>
                         <div class="mb-2">
-                            <label for="postnummer" class="form-label">Postnummer</label>
-                            <input type="text" class="form-control" id="postnummer" name="postnummer" required>
+                            <label for="zipcode" class="form-label">Postnummer</label>
+                            <input type="text" class="form-control" id="zipcode" name="zipcode" required>
                         </div>
                         <div class="mb-2">
                             <label for="phonenumber" class="form-label">Telefon nr</label>
-                            <input type="text" class="form-control" id="phonenumber" name="Telefon nr" required>
+                            <input type="text" class="form-control" id="phonenumber" name="phonenumber" required>
                         </div>
 
                         <div class="mb-2">
