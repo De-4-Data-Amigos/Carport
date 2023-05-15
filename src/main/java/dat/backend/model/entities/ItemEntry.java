@@ -12,6 +12,12 @@ public class ItemEntry {
         this.productVariantId = productVariantId;
     }
 
+    public ItemEntry(int orderId, int productVariantId) {
+        this.id = -1;
+        this.orderId = orderId;
+        this.productVariantId = productVariantId;
+    }
+
     public int getId() {
         return id;
     }
