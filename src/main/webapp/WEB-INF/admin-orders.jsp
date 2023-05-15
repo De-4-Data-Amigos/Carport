@@ -28,6 +28,31 @@
                 </div>
             </div>
         </div>
+
+        <table class="table table-striped mt-4">
+            <thead>
+            <tr>
+                <th class="text-start">Email</th>
+                <th class="text-center">User ID</th>
+                <th class="text-center">Timestamp</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Length</th>
+                <th class="text-end">Width</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="order" items="${requestScope.orderList}">
+                <tr>
+                    <td class="text-start align-middle"> ${order.email}</td>
+                    <td class="text-center align-middle"> ${order.user_id}</td>
+                    <td class="text-center align-middle">${order.timestamp}</td>
+                    <td class="text-center align-middle">${order.price}</td>
+                    <td class="text-center align-middle">${order.length}</td>
+                    <td class="text-end align-middle">${order.width}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </jsp:body>
 
 </t:pagetemplate>

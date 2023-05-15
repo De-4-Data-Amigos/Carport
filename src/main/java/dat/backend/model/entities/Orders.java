@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 
 public class Orders {
 
-
     private int id;
     private int user_id;
     private Timestamp timestamp;
