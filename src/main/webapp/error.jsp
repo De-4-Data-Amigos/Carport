@@ -18,11 +18,11 @@
         <p>... det ligner at du har skrevet forkerte login-detaljer da du forsøgte at logge ind.</p>
 
         <c:if test="${pageContext.errorData.statusCode == 404 }">
-            p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
+            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
         </c:if>
 
         <c:if test="${pageContext.errorData.statusCode == 500 }">
-            p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
+            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
         </c:if>
 
 
