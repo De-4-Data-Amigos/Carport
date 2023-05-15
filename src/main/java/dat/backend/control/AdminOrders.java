@@ -1,6 +1,8 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.entities.OrderView;
+import dat.backend.model.entities.Orders;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.AdminFacade;
@@ -27,44 +29,51 @@ public class AdminOrders extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
-                List<User> users = null;
+                List<OrderView> orders = null;
                 try {
-                    users = AdminFacade.getAllUsers(connectionPool);
+                    orders = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
 
                 } catch (DatabaseException e) {
                     request.setAttribute("errormessage", e.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
-                request.setAttribute("userList", users);
+                request.setAttribute("orderList", orders);
                 request.getRequestDispatcher("WEB-INF/admin-orders.jsp").forward(request, response);
 
             }
         }
 
-        request.setAttribute("besked", "du er ikke en admin");
-        request.getRequestDispatcher("index").forward(request, response);
+        request.setAttribute("errormessage", "Du er ikke en admin");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
 
     }
-
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        User user = (User) request.getSession().getAttribute("user");
-        if (!user.getRole().equalsIgnoreCase("admin")) {
-
-            request.setAttribute("besked", "du er ikke en admin");
-            request.getRequestDispatcher("index").forward(request, response);
+        User _user = (User) request.getSession().getAttribute("user");
+        if (!_user.getRole().equalsIgnoreCase("admin")) {
+            request.setAttribute("besked", "Du er ikke en admin");
+            request.getRequestDispatcher("login").forward(request, response);
 
         }
 
-        // Hvad skal admin kunne gøre, og hvordan vil man have det til at se ud?
-        // Vi skal have tilføjet metoder til hvad man skal her - for inspiration kig cupcake
+        try {
+            List<OrderView> orderList = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
+
+            request.setAttribute("orderList", orderList); // Gem orderlisten i request
+            request.getRequestDispatcher("admin-users.jsp").forward(request, response);
+
+        } catch (DatabaseException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
 
 
-        response.sendRedirect("admin-users");
+        response.sendRedirect("admin-orders");
     }
-
 }
+
+
 
