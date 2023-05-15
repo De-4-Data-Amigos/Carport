@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "Register", value = "/Register")
+@WebServlet(name = "Register", value = "/register")
 public class Register extends HttpServlet {
 
     private ConnectionPool connectionPool;
