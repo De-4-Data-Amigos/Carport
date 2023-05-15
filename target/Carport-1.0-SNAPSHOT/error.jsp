@@ -14,37 +14,47 @@
     </jsp:attribute>
 
     <jsp:body>
-        <br>
-        <p>... det ligner at du har skrevet forkerte login-detaljer da du forsøgte at logge ind.</p>
+        <div class="row">
+            <div class="container col-md-8">
+                <br>
+                <p>... det ligner at du har skrevet forkerte login-detaljer da du forsøgte at logge ind.</p>
 
-        <c:if test="${pageContext.errorData.statusCode == 404 }">
-            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
-        </c:if>
+                <c:if test="${pageContext.errorData.statusCode == 404 }">
+                    <p> Tryk venligst <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt
+                        dette
+                        <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
+                </c:if>
 
-        <c:if test="${pageContext.errorData.statusCode == 500 }">
-            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
-        </c:if>
+                <c:if test="${pageContext.errorData.statusCode == 500 }">
+                    <p> Tryk venligst <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt
+                        dette
+                        <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
+                </c:if>
 
 
-        <c:if test="${requestScope.errormessage != null}">
-            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p></p>
-        </c:if>
+                <c:if test="${requestScope.errormessage != null}">
+                    <p> Tryk venligst <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt
+                        dette
+                        <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p></p>
+                </c:if>
 
-        <c:if test="${requestScope.errormessage  == null}">
-            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
-        </c:if>
+                <c:if test="${requestScope.errormessage  == null}">
+                    <p> Tryk venligst <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt
+                        dette
+                        <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
+                </c:if>
+            </div>
 
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="col-md-4">
-            <div class="h-48 p-5 bg-light border rounded-3">
-                <p><em>Brug for øvrig hjælp? Vi står klar her:</em></p>
-                <div class="col">
-                    <p><img src="images/mail.png" width="35px;" class="img-fluid align-left"/><em>   Kontakt@Fog.dk</em></p>
-                    <p><img src="images/tlf.png" width="35px;" class="img-fluid align-left"/><em>  +45 40404040</em></p>
+            <div class="container col-md-4">
+                <div class="h-48 p-5 bg-light border rounded-3">
+                    <p><em>Brug for øvrig hjælp? Vi står klar her:</em></p>
+                    <div class="col">
+                        <p><img src="images/mail.png" width="35px;" class="img-fluid align-left"/><em>
+                            Kontakt@Fog.dk</em>
+                        </p>
+                        <p><img src="images/tlf.png" width="35px;" class="img-fluid align-left"/><em> +45 40404040</em>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,3 +63,4 @@
 
     </jsp:body>
 </t:pagetemplate>
+
