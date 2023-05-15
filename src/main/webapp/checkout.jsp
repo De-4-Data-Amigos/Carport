@@ -79,6 +79,8 @@
 
                     <button type="submit" class="btn btn-info margin-top">Bekræft bestilling</button>
 
+                    <p>test</p>
+
                 </div>
             </div>
 
