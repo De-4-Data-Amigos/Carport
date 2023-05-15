@@ -6,7 +6,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Error page
+             Hov!
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -14,30 +14,42 @@
     </jsp:attribute>
 
     <jsp:body>
-
-        <p>An error has occured. This is the best message we can come up
-            with right now: </p>
+        <br>
+        <p>... det ligner at du har skrevet forkerte login-detaljer da du forsøgte at logge ind.</p>
 
         <c:if test="${pageContext.errorData.statusCode == 404 }">
-            <p><b>Error code:</b> ${pageContext.errorData.statusCode}</p>
+            p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
         </c:if>
 
         <c:if test="${pageContext.errorData.statusCode == 500 }">
-            <p><b>Error code:</b> ${pageContext.errorData.statusCode}</p>
-            <p>A serious error happened at the server.</p>
+            p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
         </c:if>
 
 
         <c:if test="${requestScope.errormessage != null}">
-            <p>${requestScope.errormessage}</p>
+            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p></p>
         </c:if>
 
         <c:if test="${requestScope.errormessage  == null}">
-            <p>Abandon ship. We have no idea how you ended up here!</p>
+            <p> Tryk venligst  <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt dette <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
         </c:if>
 
-        <p>Jump back to the <a href="index.jsp">Frontpage</a>,
-            or try <a href="login.jsp">logging</a> in again.</p>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="col-md-4">
+            <div class="h-48 p-5 bg-light border rounded-3">
+                <p><em>Brug for øvrig hjælp? Vi står klar her:</em></p>
+                <div class="col">
+                    <p><img src="images/mail.png" width="35px;" class="img-fluid align-left"/><em>   Kontakt@Fog.dk</em></p>
+                    <p><img src="images/tlf.png" width="35px;" class="img-fluid align-left"/><em>  +45 40404040</em></p>
+                </div>
+            </div>
+        </div>
+
+        <br>
 
     </jsp:body>
 </t:pagetemplate>
