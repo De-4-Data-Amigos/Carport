@@ -47,17 +47,6 @@
                                     <td class="text-end"></td>
                                 </tr>
 
-
-                                    <%-- <c:forEach var="cupcake" items="${sessionScope.confirm_order.cupcakes}" varStatus="loop">
-                                        <tr>
-                                            <td class="text-start align-middle"> Cupcake #${loop.count} </td>
-                                            <td class="text-center align-middle">${cupcake.cupcakeTopFlavor}</td>
-                                            <td class="text-center align-middle">${cupcake.cupcakeBottomFlavor}</td>
-                                            <td class="text-end">
-                                            </td>
-                                        </tr>
-                                    </c:forEach> --%>
-
                             </table>
                         </form>
 
