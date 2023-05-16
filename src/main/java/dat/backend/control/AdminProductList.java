@@ -1,14 +1,22 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.entities.OrderView;
+import dat.backend.model.entities.Product;
+import dat.backend.model.entities.User;
+import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.persistence.AdminFacade;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.ProductFacade;
+import dat.backend.model.persistence.ProductMapper;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "AdminProductList", value = "/adminproductlist")
+@WebServlet(name = "AdminProductList", value = "/admin-productlist")
 public class AdminProductList extends HttpServlet {
 
     private ConnectionPool connectionPool;
@@ -20,11 +28,53 @@ public class AdminProductList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            if (user.getRole().equalsIgnoreCase("admin")) {
+                List<Product> products = null;
+                try {
+                    products = ProductFacade.getAllProducts(connectionPool);
+
+                } catch (DatabaseException e) {
+                    request.setAttribute("errormessage", e.getMessage());
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                }
+                request.setAttribute("productList", products);
+                request.getRequestDispatcher("WEB-INF/admin-productlist.jsp").forward(request, response);
+
+            }
+        }
+
+        request.setAttribute("errormessage", "Du er ikke en admin");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+
 
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        User _user = (User) request.getSession().getAttribute("user");
+        if (!_user.getRole().equalsIgnoreCase("admin")) {
+            request.setAttribute("besked", "Du er ikke en admin");
+            request.getRequestDispatcher("login").forward(request, response);
+            return;
+        }
+
+        try {
+            List<Product> productList = ProductFacade.getAllProducts(connectionPool);
+            request.setAttribute("productList", productList); // Gem produktlisten i request
+            request.getRequestDispatcher("admin-productlist.jsp").forward(request, response);
+
+        } catch (DatabaseException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+
+
+        response.sendRedirect("admin-productlist");
     }
+
 }
+

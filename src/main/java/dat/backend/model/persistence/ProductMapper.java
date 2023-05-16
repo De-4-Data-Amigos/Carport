@@ -25,9 +25,11 @@ public class ProductMapper {
                 while (rs.next()) {
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    Unit unit = rs.getObject("unit", Unit.class);
+                    String unitString = rs.getString("unit");
+                    Unit unit = Unit.valueOf(unitString);
                     float pricePrUnit = rs.getFloat("price_pr_unit");
-                    ProductType type = rs.getObject("type", ProductType.class);
+                    String typeString = rs.getString("type");
+                    ProductType type = ProductType.valueOf(typeString);
                     int id = rs.getInt("id");
                     int productId = rs.getInt("product_id");
                     float length = rs.getFloat("length");
@@ -35,6 +37,10 @@ public class ProductMapper {
 
                     Product product = new Product(name, description, unit, pricePrUnit, type, id, productId, length, width);
                     productList.add(product);
+
+                    //Vi bruger getString()-metoden til at konvertere enumværdien til en streng, ved linje 28-29 og 34-35.
+                    // da Resultset ikke virker direkte med en konvertering af enumværdier til Java-enum typer.
+                    // getObject()-metoden bruges normalt til at hente værdier af primitiv datatype,
                 }
             }
         } catch (SQLException e) {

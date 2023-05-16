@@ -63,7 +63,7 @@ public class AdminOrders extends HttpServlet {
             List<OrderView> orderList = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
 
             request.setAttribute("orderList", orderList); // Gem orderlisten i request
-            request.getRequestDispatcher("admin-users.jsp").forward(request, response);
+            request.getRequestDispatcher("admin-orders.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());

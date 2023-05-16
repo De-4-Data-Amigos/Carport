@@ -2,9 +2,9 @@ package dat.backend.model.entities;
 
 public enum ProductType {
 
-    Hardware,
-    RoofTile,
-    Wood;
+    hardware,
+    roofTile,
+    wood;
 
 
 }

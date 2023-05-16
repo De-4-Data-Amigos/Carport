@@ -6,7 +6,7 @@ import dat.backend.model.exceptions.DatabaseException;
 import java.util.List;
 
 public class ProductFacade {
-    static List<Product> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
+    public static List<Product> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
         return ProductMapper.getAllProducts(connectionPool);
     }
 }
