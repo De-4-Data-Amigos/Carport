@@ -40,8 +40,8 @@
                     <!-- dobbelt id navbar? -->
                     <div class="navbar-nav">
                         <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link"
-                           href="${pageContext.request.contextPath}/carportbuilderlogin"><b>Carport</b></a>
+                            <a class="nav-item nav-link"
+                               href="${pageContext.request.contextPath}/carportbuilderlogin"><b>Carport</b></a>
                         </c:if>
                         <c:if test="${sessionScope.user == null }">
                             <a class="nav-item nav-link"
@@ -70,22 +70,27 @@
                 </div>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <!-- dobbelt id navbar? -->
-                    <div class="navbar-nav">
+                    <div class="navbar-nav d-flex justify-content-between">
                         <c:if test="${sessionScope.user == null }">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                         </c:if>
+
                         <c:if test="${sessionScope.user != null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                            <div>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log
+                                    out</a>
+                            </div>
                         </c:if>
 
                         <c:if test="${sessionScope.user.role.equalsIgnoreCase(\"admin\")}">
-                            <div class="position-absolute mt-4 ms-2">
+                            <div class="mt-2">
                                 <a href="adminhub">
-                                    <h5> Admin</h5></a>
+                                    <h5>Admin</h5></a>
                             </div>
                         </c:if>
                     </div>
                 </div>
+
         </div>
     </nav>
 </header>
@@ -109,10 +114,16 @@
                target="_blank">Fortrydelse og returnering</a>
         </div>
         <div class="col text-center">
+            <b>Aktuelt</b><br/>
+            <a class="link-black" href="https://www.johannesfog.dk/om-fog/aktuelt/aviser-og-kataloger" target="_blank">Aviser
+                og kataloger</a><br/>
+            <a class="link-black" href="https://www.johannesfog.dk/om-fog/nyhedsbrev" target="_blank">Tilmeld
+                nyhedsbrev</a>
+        </div>
+        <div class="col text-center">
             <b>Om Fog</b><br/>
             <a class="link-black" href="https://www.johannesfog.dk/om-fog/forretninger" target="_blank">Åbningstider</a><br/>
             <a class="link-black" href="https://www.johannesfog.dk/om-fog" target="_blank">Om Fog</a>
-
         </div>
         <div class="col text-end">
             <img src="${pageContext.request.contextPath}/images/logo.svg" alt="Fog logo" width="50px;"
