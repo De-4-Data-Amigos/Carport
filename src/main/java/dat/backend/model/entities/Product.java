@@ -8,6 +8,9 @@ public class Product {
     private Unit unit;
     private float pricePrUnit;
     private ProductType type;
+    private int productId;
+    private float length;
+    private float width;
 
 
     public Product(int id, String name, String description, Unit unit, float pricePrUnit, ProductType type) {
@@ -19,6 +22,29 @@ public class Product {
         this.type = type;
     }
 
+    public Product(String name, String description, Unit unit, float pricePrUnit, ProductType type, int id, int productId, float length, float width) {
+        this.name = name;
+        this.description = description;
+        this.unit = unit;
+        this.pricePrUnit = pricePrUnit;
+        this.type = type;
+        this.id = id;
+        this.productId = productId;
+        this.length = length;
+        this.width = width;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public float getLength() {
+        return length;
+    }
+
+    public float getWidth() {
+        return width;
+    }
 
     public int getId() {
         return id;
