@@ -50,14 +50,14 @@
                     <td class="text-center align-middle">${order.price}</td>
                     <td class="text-center align-middle">${order.length}</td>
                     <td class="text-end align-middle">${order.width}</td>
-
-                    <form method="post" action="removeadminorder">
-                        <button type="submit"
-                                class="ms-2 btn btn-primary btm-sm" name="id"
-                                value="${order.orderId}">Fjern
-
-                        </button>
-                    </form>
+                    <td class="text-end align-middle">
+                        <form method="post" action="removeadminorder">
+                            <button type="submit"
+                                    class="ms-2 btn btn-primary btm-sm" name="id"
+                                    value="${order.orderId}">Fjern
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
