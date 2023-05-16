@@ -2,7 +2,8 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@page errorPage="../error.jsp" isErrorPage="false" %> <!-- Vi skriver ../ foran error fordi vi er i WEB-INF mappen, og error ligger kun i webapp mappen, så vi går én mappe tilbage ved at skrive ../ -->
+<%@page errorPage="../error.jsp" isErrorPage="false" %>
+<!-- Vi skriver ../ foran error fordi vi er i WEB-INF mappen, og error ligger kun i webapp mappen, så vi går én mappe tilbage ved at skrive ../ -->
 
 <t:pagetemplate>
     <jsp:attribute name="header">
@@ -49,6 +50,14 @@
                     <td class="text-center align-middle">${order.price}</td>
                     <td class="text-center align-middle">${order.length}</td>
                     <td class="text-end align-middle">${order.width}</td>
+
+                    <form method="post" action="removeadminorder">
+                        <button type="submit"
+                                class="ms-2 btn btn-primary btm-sm" name="id"
+                                value="${order.orderId}">Fjern
+
+                        </button>
+                    </form>
                 </tr>
             </c:forEach>
             </tbody>

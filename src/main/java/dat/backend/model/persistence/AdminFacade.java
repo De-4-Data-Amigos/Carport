@@ -20,4 +20,6 @@ public class AdminFacade {
     public static List<OrderView> getAllOrdersAndUserInfo (ConnectionPool connectionPool) throws DatabaseException {
         return AdminMapper.getAllOrdersAndUserInfo(connectionPool);
     }
+
+
 }
