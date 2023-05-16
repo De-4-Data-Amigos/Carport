@@ -25,7 +25,7 @@
                     <div class="h-100 p-5 bg-light border rounded-3">
 
                         <h2>Din kurv:</h2>
-                        <form method="post" action="submit">
+                        <form method="post" action="removechosenorder">
                             <table class="table table-striped mt-4">
                                 <thead>
 
@@ -41,10 +41,10 @@
                                 </thead>
 
                                 <tr>
-                                    <td class="text-start align-middle"><img src="images/Carport.png" width="120px;" class="img-fluid align-left"/>${requestScope.order} (Carport, fladt tag) </td>
+                                    <td class="text-start align-middle"><img src="images/Carport.png" width="120px;" class="img-fluid align-left"/>${requestScope.order} </td>
                                     <td class="text-center align-middle">${requestScope.width}cm x ${requestScope.length}cm</td>
                                     <td class="text-center align-middle">${requestScope.getPrice}</td>
-                                    <td class="text-center align-middle"><button type="submit" class="btn btn-info btn-sm" name="remove" value="1">Fjern</button></td>
+                                    <td class="text-center align-middle"><button type="submit" class="btn btn-info btn-sm" name="removechosenorder" value="1">Fjern</button></td>
                                 </tr>
 
                             </table>

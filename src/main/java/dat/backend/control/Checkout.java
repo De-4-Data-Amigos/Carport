@@ -46,8 +46,8 @@ public class Checkout extends HttpServlet {
         int length = Integer.parseInt(lengthString);
 
         HttpSession session = request.getSession();
-        Orders order = (Orders)session.getAttribute("");
-        User user = (User)session.getAttribute("user");
+        Orders order = null;
+        User user = (User) session.getAttribute("user");
 
         int orderID;
 
@@ -57,19 +57,15 @@ public class Checkout extends HttpServlet {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
+        request.setAttribute("order", order);
 
 
-
-
-
-
-            // Tilføje ordren ved at sammensætte de forskellige dele fra den store udregning?
-            //
-
-
+        // Tilføje ordren ved at sammensætte de forskellige dele fra den store udregning?
+        //
 
 
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
