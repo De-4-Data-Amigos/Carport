@@ -25,9 +25,11 @@ public class ProductMapper {
                 while (rs.next()) {
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    Unit unit = rs.getObject("unit", Unit.class);
+                    String unitString = rs.getString("unit");
+                    Unit unit = Unit.valueOf(unitString);
                     float pricePrUnit = rs.getFloat("price_pr_unit");
-                    ProductType type = rs.getObject("type", ProductType.class);
+                    String typeString = rs.getString("type");
+                    ProductType type = ProductType.valueOf(typeString);
                     int id = rs.getInt("id");
                     int productId = rs.getInt("product_id");
                     float length = rs.getFloat("length");
