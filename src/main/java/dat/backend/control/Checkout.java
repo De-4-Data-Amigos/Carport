@@ -25,15 +25,19 @@ public class Checkout extends HttpServlet {
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
+    /**
+     * I Checkout's doGet metode vil vi vise den carport til kunden, som de på forrige side har valgt da de valgte bredde og længde
+     * på deres ønskede carport. Metoden viser bredde, længde samt en ca. pris - og har en knap til hvis de fortryder.
+     *
+     * @param request er det vi ønsker at få
+     * @param response er det vi ønsker at sende
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /* Hvad skal Checkout?
-        - Vise den ordre, som er blevet sammensat af kunden på forrige side
-        - Trække mål og pris fra input fra jsp.siden
-        - Kan gå videre til næste side vha. bekræft-bestilling knap på jsp (tjek)
-         */
 
         String widthString = request.getParameter("width");
         String lengthString = request.getParameter("length");
