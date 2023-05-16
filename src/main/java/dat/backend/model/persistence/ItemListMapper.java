@@ -27,6 +27,7 @@ public class ItemListMapper {
 
 
     }
+
     static void addItemList(int orderId, int productVariantId, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "INSERT INTO itemlist (order_id, product_variant_id) values (?,?);";
 
@@ -45,6 +46,7 @@ public class ItemListMapper {
         }
 
     }
+
     static CompleteProduct getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT il.id, order_id, product_variant_id, product_id, heigth, width, length, product.name," +
                 " description, price_pr_unit, unit, type, count(*) as amount FROM carport.itemlist as il " +
@@ -61,17 +63,17 @@ public class ItemListMapper {
                     int order_id = rs.getInt("order_id");
                     int product_variant_id = rs.getInt("product_variant_id");
                     int product_id = rs.getInt("product_id");
-                   float height = rs.getFloat("height");
+                    float height = rs.getFloat("height");
                     float width = rs.getFloat("width");
                     float length = rs.getFloat("length");
-                   String name = rs.getString("name");
-                   String description = rs.getString("description");
+                    String name = rs.getString("name");
+                    String description = rs.getString("description");
                     float price_pr_unit = rs.getFloat("price_pr_unit");
                     Unit unit = rs.getObject("unit", Unit.class);
                     ProductType type = rs.getObject("type", ProductType.class);
-                   int amount = rs.getInt("amount");
+                    int amount = rs.getInt("amount");
 
-                 completeProduct = new CompleteProduct(name, length, amount, unit, description);
+                    completeProduct = new CompleteProduct(name, length, amount, unit, description);
 
                 }
             }
@@ -82,6 +84,17 @@ public class ItemListMapper {
     }
 
 
+    static void removeItemListOrderId(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM carport.itemlist WHERE order_id = ?;";
 
-
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
     }
+
+}

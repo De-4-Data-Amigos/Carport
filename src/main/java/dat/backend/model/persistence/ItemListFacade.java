@@ -16,4 +16,8 @@ public class ItemListFacade {
         addItemList(itemEntry, connectionPool);
     }
 
+    public static void removeItemListOrder(int id, ConnectionPool connectionPool) throws DatabaseException {
+        ItemListMapper.removeItemListOrderId(id, connectionPool);
+    }
+
 }

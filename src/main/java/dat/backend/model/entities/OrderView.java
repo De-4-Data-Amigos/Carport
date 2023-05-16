@@ -3,6 +3,7 @@ package dat.backend.model.entities;
 import java.sql.Timestamp;
 
 public class OrderView {
+    private int orderId;
     private int user_id;
     private Timestamp timestamp;
     private float price;
@@ -10,13 +11,18 @@ public class OrderView {
     private int width;
     private String email;
 
-    public OrderView(int user_id, Timestamp timestamp, float price, int length, int width, String email) {
+    public OrderView(int orderId, int user_id, Timestamp timestamp, float price, int length, int width, String email) {
+        this.orderId = orderId;
         this.user_id = user_id;
         this.timestamp = timestamp;
         this.price = price;
         this.length = length;
         this.width = width;
         this.email = email;
+    }
+
+    public int getOrderId() {
+        return orderId;
     }
 
     public int getUser_id() {

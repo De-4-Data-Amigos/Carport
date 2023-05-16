@@ -20,7 +20,7 @@ public class AdminMapper {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     int userId = rs.getInt("user_id");
-                    String email= rs.getString("email");
+                    String email = rs.getString("email");
                     String password = rs.getString("password");
                     String firstname = rs.getString("firstname");
                     String lastname = rs.getString("lastname");
@@ -74,14 +74,15 @@ public class AdminMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int orderId = rs.getInt("user_id");
+                    int orderId = rs.getInt("id");
+                    int userId = rs.getInt("user_id");
                     Timestamp timestamp = rs.getTimestamp("timestamp");
                     int totalPrice = rs.getInt("price");
                     int length = rs.getInt("length");
                     int width = rs.getInt("width");
                     String email = rs.getString("email");
 
-                    OrderView order = new OrderView(orderId, timestamp, totalPrice, length, width, email);
+                    OrderView order = new OrderView(orderId, userId, timestamp, totalPrice, length, width, email);
                     orderViewList.add(order);
                 }
             }
@@ -91,4 +92,7 @@ public class AdminMapper {
         return orderViewList;
     }
 
+
+
 }
+
