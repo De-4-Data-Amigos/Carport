@@ -5,9 +5,11 @@ import dat.backend.model.entities.ItemEntry;
 import dat.backend.model.entities.Orders;
 import dat.backend.model.exceptions.DatabaseException;
 
+import java.util.List;
+
 public class ItemListFacade {
 
-    public static CompleteProduct getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
+    public static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
 
         return ItemListMapper.getCompletProduct(order, connectionPool);
     }

@@ -21,4 +21,10 @@ public class OrderFacade {
     public static void deleteOrders(int orderId, ConnectionPool connectionPool) throws DatabaseException {
         OrderMapper.deleteOrders(orderId, connectionPool);
     }
+
+    public static void setPrice(int id, float price, ConnectionPool connectionPool) throws DatabaseException {
+        OrderMapper.setPrice(id, price, connectionPool);
+
+
+    }
 }
