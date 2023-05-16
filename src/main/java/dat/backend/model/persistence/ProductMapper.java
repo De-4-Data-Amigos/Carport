@@ -37,6 +37,10 @@ public class ProductMapper {
 
                     Product product = new Product(name, description, unit, pricePrUnit, type, id, productId, length, width);
                     productList.add(product);
+
+                    //Vi bruger getString()-metoden til at konvertere enumværdien til en streng, ved linje 28-29 og 34-35.
+                    // da Resultset ikke virker direkte med en konvertering af enumværdier til Java-enum typer.
+                    // getObject()-metoden bruges normalt til at hente værdier af primitiv datatype,
                 }
             }
         } catch (SQLException e) {
