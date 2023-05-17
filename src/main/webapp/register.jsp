@@ -21,7 +21,7 @@
             <p>${requestScope.message}</p>
         </c:if>
 
-
+        <div class="h-48 p-5 bg-light border rounded-3 mt-2">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-4">
@@ -66,6 +66,8 @@
                 </div>
             </div>
         </div>
+        </div>
+
         <br>
 
 
