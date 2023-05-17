@@ -34,19 +34,15 @@ public class CarportBuilder extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String widthString = request.getParameter("width");
-        String lengthString = request.getParameter("length");
+        String[] split = request.getParameter("dimensions").split(":");
+        String widthString = split[0];
+        String lengthString = split[1];
 
         int width = Integer.parseInt(widthString);
         int length = Integer.parseInt(lengthString);
-        User user = (User) request.getSession().getAttribute("user");
-        Orders order = null;
-        try {
-            order = new Orders(width, length, user, connectionPool);
-        } catch (DatabaseException e) {
-            request.setAttribute("errormessage", e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        Orders order = (Orders) session.getAttribute("order");
 
         List<CompleteProduct> itemList = null;
         try {

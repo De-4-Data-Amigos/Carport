@@ -36,7 +36,7 @@ public class CarportBuilderHelper {
         itemEntryList.addAll(posts);
         itemEntryList.addAll(straps);
         itemEntryList.addAll(rafters);
-        order.setDbPrice(price, connectionPool);
+        order.setDbPrice(price*1.20f, connectionPool);
 
         for (ItemEntry items : itemEntryList) {
             ItemListFacade.addItemList(items,connectionPool);
@@ -94,8 +94,8 @@ public class CarportBuilderHelper {
 
     private static List<ItemEntry> getSternFrontAndBackAmount(int width, int orderId) {
         float pricePrUnit = 0.37f;
-        int amount = 4;
-        int widthTmp = width;
+        int amount = 2;
+        int widthTmp = width *2;
 
         while (widthTmp > 360) {
             amount += 1;
@@ -125,7 +125,7 @@ public class CarportBuilderHelper {
             lengthTmp -= 540;
         }
 
-        int sternProductVariantId = 3;
+        int sternProductVariantId = 5;
         List<ItemEntry> itemEntryList = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             itemEntryList.add(new ItemEntry(orderId, sternProductVariantId));
@@ -209,6 +209,7 @@ public class CarportBuilderHelper {
                 }
             }
         }
+        roofScrewAmount = (int) Math.max(Math.floor(roofScrewAmount / 4f),1);
         for (int i = 0; i < roofScrewAmount; i++) {
             itemEntryList.add(new ItemEntry(orderId, 17));
             price += pricePrUnitScrew;

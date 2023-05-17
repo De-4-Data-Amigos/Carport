@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
-@WebServlet(name = "Checkout", value = "/Checkout")
+@WebServlet(name = "Checkout", value = "/checkout")
 public class Checkout extends HttpServlet {
 
     private ConnectionPool connectionPool;
@@ -46,7 +46,7 @@ public class Checkout extends HttpServlet {
         int length = Integer.parseInt(lengthString);
 
         HttpSession session = request.getSession();
-        Orders order = (Orders)session.getAttribute("");
+        Orders order = null;
         User user = (User)session.getAttribute("user");
 
         int orderID;
@@ -57,7 +57,10 @@ public class Checkout extends HttpServlet {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-
+        request.setAttribute("width", width);
+        request.setAttribute("length", length);
+        session.setAttribute("order", order);
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
 
 
 
