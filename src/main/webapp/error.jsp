@@ -17,7 +17,6 @@
         <div class="row">
             <div class="container col-md-8">
                 <br>
-                <p>... det ligner at du har skrevet forkerte login-detaljer da du forsøgte at logge ind.</p>
 
                 <c:if test="${pageContext.errorData.statusCode == 404 }">
                     <p> Tryk venligst <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt
@@ -33,9 +32,10 @@
 
 
                 <c:if test="${requestScope.errormessage != null}">
-                    <p> Tryk venligst <a href="login.jsp">her</a> for at komme tilbage til login-siden<br> eller benyt
-                        dette
-                        <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p></p>
+                    <p> Hov! Der gik noget galt!
+                    Fejl: ${requestScope.errormessage}
+                    </p>
+
                 </c:if>
 
                 <c:if test="${requestScope.errormessage  == null}">
@@ -43,6 +43,8 @@
                         dette
                         <a href="register.jsp">link</a> hvis du endnu ikke er oprettet som kunde.</p>
                 </c:if>
+
+
             </div>
 
             <div class="container col-md-4">
