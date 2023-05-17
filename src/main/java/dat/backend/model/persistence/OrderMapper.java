@@ -19,7 +19,7 @@ public class OrderMapper {
                 ps.setInt(1, order.getUser_id());
                 ps.setFloat(2, order.getPrice());
                 ps.setInt(3, order.getLength());
-                ps.setInt(3, order.getWidth());
+                ps.setInt(4, order.getWidth());
 
                 int rowsAffected = ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();

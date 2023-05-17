@@ -68,8 +68,9 @@
                             <p><em>Bemærk at der <b>altid</b> er gratis fragt hos Fog!</em></p>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-info margin-top">Bekræft bestilling</button>
+                    <form method="post" action="carportbuilder">
+                        <button type="submit" class="btn btn-info margin-top" name="dimensions" value="${requestScope.width}:${requestScope.length}">Bekræft bestilling</button>
+                    </form>
 
                 </div>
             </div>
