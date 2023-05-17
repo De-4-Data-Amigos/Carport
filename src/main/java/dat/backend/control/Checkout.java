@@ -61,15 +61,8 @@ public class Checkout extends HttpServlet {
         request.setAttribute("length", length);
         session.setAttribute("order", order);
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
-
-
-
-
-
         // Tilføje ordren ved at sammensætte de forskellige dele fra den store udregning?
         //
-
-
     }
 
 
