@@ -26,7 +26,9 @@ public class RemoveAdminOrder extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<OrderView> orders = null;
+
         try {
+
             orders = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
 
         } catch (DatabaseException e) {
