@@ -43,8 +43,8 @@
 
                                 <tr>
                                     <td class="text-start align-middle"><img src="images/Carport.png" width="120px;" class="img-fluid align-left"/>${requestScope.order} </td>
-                                    <td class="text-center align-middle">${requestScope.width}cm x ${requestScope.length}cm</td>
-                                    <td class="text-center align-middle">${requestScope.getPrice}</td>
+                                    <td class="text-center align-middle">${requestScope.width} cm x ${requestScope.length} cm</td>
+                                    <td class="text-center align-middle">${sessionScope.order.price} kr</td>
                                     <td class="text-center align-middle"><button type="submit" class="btn btn-info btn-sm" name="removechosenorder" value="1">Fjern</button></td>
 
                                 </tr>
