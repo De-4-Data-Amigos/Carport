@@ -77,4 +77,18 @@ public class OrderMapper {
         }
     }
 
-}
+    public static void setPrice(int id, float price, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "UPDATE carport.orders SET price = ? WHERE id = ?;";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setFloat(1,price);
+                ps.setInt(2, id);
+            }
+        }  catch (SQLException e) {
+        throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+    }
+
+            }
+    }
+
