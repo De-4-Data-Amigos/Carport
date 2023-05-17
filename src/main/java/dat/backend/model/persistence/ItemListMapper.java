@@ -50,10 +50,7 @@ public class ItemListMapper {
     }
 
     static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT il.id, order_id, product_variant_id, product_id, heigth, width, length, product.name," +
-                " description, price_pr_unit, unit, type, count(*) as amount FROM carport.itemlist as il " +
-                "INNER JOIN carport.product_variant as pvar on il.product_variant_id = pvar.id " +
-                "NNER JOIN carport.product as product on pvar.product_id = product.id where order_id = ? group by product_variant_id";
+        String sql = "SELECT il.id, order_id, product_variant_id, product_id, height, width, length, product.name, description, price_pr_unit, unit, type, count(*) as amount FROM carport.itemlist as il INNER JOIN carport.product_variant as pvar on il.product_variant_id = pvar.id INNER JOIN carport.product as product on pvar.product_id = product.id where order_id = ? group by product_variant_id;";
        List <CompleteProduct> completeProducts = new ArrayList<>();
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -64,7 +61,8 @@ public class ItemListMapper {
                     float length = rs.getFloat("length");
                    String name = rs.getString("name");
                    String description = rs.getString("description");
-                    Unit unit = rs.getObject("unit", Unit.class);
+                    String unitString = rs.getString("unit");
+                    Unit unit = Unit.valueOf(unitString);
                    int amount = rs.getInt("amount");
 
                  completeProducts.add(new CompleteProduct(name, length, amount, unit, description));
