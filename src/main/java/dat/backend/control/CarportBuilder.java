@@ -48,7 +48,13 @@ public class CarportBuilder extends HttpServlet {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
-        List<CompleteProduct> itemList = CarportBuilderHelper.generateItemList(width, length, order);
+        List<CompleteProduct> itemList = null;
+        try {
+            itemList = CarportBuilderHelper.generateItemList(width, length, order);
+        } catch (DatabaseException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
         request.setAttribute("itemList", itemList);
         request.getRequestDispatcher("checkout").forward(request,response);
 

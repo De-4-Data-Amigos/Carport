@@ -26,6 +26,7 @@
 
                         <h2>Din kurv:</h2>
                         <form method="post" action="removechosenorder">
+                        <form method="post" action="submit">
                             <table class="table table-striped mt-4">
                                 <thead>
 
@@ -45,6 +46,7 @@
                                     <td class="text-center align-middle">${requestScope.width}cm x ${requestScope.length}cm</td>
                                     <td class="text-center align-middle">${requestScope.getPrice}</td>
                                     <td class="text-center align-middle"><button type="submit" class="btn btn-info btn-sm" name="removechosenorder" value="1">Fjern</button></td>
+
                                 </tr>
 
                             </table>

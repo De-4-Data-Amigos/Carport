@@ -63,4 +63,14 @@ public class Orders {
     public int getWidth() {
         return width;
     }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setDbPrice(float price, ConnectionPool connectionPool) throws DatabaseException {
+        setPrice(price);
+        OrderFacade.setPrice(id, price, connectionPool);
+    }
+
 }

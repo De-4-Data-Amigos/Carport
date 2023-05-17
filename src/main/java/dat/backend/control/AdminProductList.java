@@ -2,11 +2,13 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.OrderView;
-import dat.backend.model.entities.Orders;
+import dat.backend.model.entities.Product;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.AdminFacade;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.ProductFacade;
+import dat.backend.model.persistence.ProductMapper;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,8 +16,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminOrders", value = "/admin-orders")
-public class AdminOrders extends HttpServlet {
+@WebServlet(name = "AdminProductList", value = "/admin-productlist")
+public class AdminProductList extends HttpServlet {
 
     private ConnectionPool connectionPool;
 
@@ -29,22 +31,23 @@ public class AdminOrders extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
-                List<OrderView> orders = null;
+                List<Product> products = null;
                 try {
-                    orders = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
+                    products = ProductFacade.getAllProducts(connectionPool);
 
                 } catch (DatabaseException e) {
                     request.setAttribute("errormessage", e.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
-                request.setAttribute("orderList", orders);
-                request.getRequestDispatcher("WEB-INF/admin-orders.jsp").forward(request, response);
+                request.setAttribute("productList", products);
+                request.getRequestDispatcher("WEB-INF/admin-productlist.jsp").forward(request, response);
 
             }
         }
 
         request.setAttribute("errormessage", "Du er ikke en admin");
         request.getRequestDispatcher("error.jsp").forward(request, response);
+
 
     }
 
@@ -56,14 +59,13 @@ public class AdminOrders extends HttpServlet {
         if (!_user.getRole().equalsIgnoreCase("admin")) {
             request.setAttribute("besked", "Du er ikke en admin");
             request.getRequestDispatcher("login").forward(request, response);
-
+            return;
         }
 
         try {
-            List<OrderView> orderList = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
-
-            request.setAttribute("orderList", orderList); // Gem orderlisten i request
-            request.getRequestDispatcher("admin-orders.jsp").forward(request, response);
+            List<Product> productList = ProductFacade.getAllProducts(connectionPool);
+            request.setAttribute("productList", productList); // Gem produktlisten i request
+            request.getRequestDispatcher("admin-productlist.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
@@ -71,9 +73,8 @@ public class AdminOrders extends HttpServlet {
         }
 
 
-        response.sendRedirect("admin-orders");
+        response.sendRedirect("admin-productlist");
     }
+
 }
-
-
 

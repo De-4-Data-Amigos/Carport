@@ -22,5 +22,9 @@ public class OrderFacade {
     public static void removeOrderById(int id, ConnectionPool connectionPool) throws DatabaseException{
         OrderMapper.removeOrder(id, connectionPool);
     }
+    public static void setPrice(int id, float price, ConnectionPool connectionPool) throws DatabaseException {
+        OrderMapper.setPrice(id, price, connectionPool);
+
+    }
 
 }
