@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import java.util.List;
 
-@WebServlet(name = "RemoveChosenOrder", value = "/RemoveChosenOrder")
+@WebServlet(name = "RemoveChosenOrder", value = "/removechosenorder")
 public class RemoveChosenOrder extends HttpServlet {
 
     private ConnectionPool connectionPool;
@@ -28,9 +28,10 @@ public class RemoveChosenOrder extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("order", null);
 
-        request.getRequestDispatcher("carportbuilder.jsp").forward(request, response);
+        request.getSession().setAttribute("order", null);
+
+        request.getRequestDispatcher("WEB-INF/carportbuilder.jsp").forward(request, response);
 
     }
 
