@@ -52,7 +52,7 @@ public class AdminUsers extends HttpServlet {
         User _user = (User) request.getSession().getAttribute("user");
         if (!_user.getRole().equalsIgnoreCase("admin")) {
             request.setAttribute("besked", "Du er ikke en admin");
-            request.getRequestDispatcher("index").forward(request, response);
+            request.getRequestDispatcher("login").forward(request, response);
 
         }
 

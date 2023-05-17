@@ -27,6 +27,26 @@ public class ItemListMapper {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
 
+
+    }
+
+    static void addItemList(int orderId, int productVariantId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO itemlist (order_id, product_variant_id) values (?,?);";
+
+        try (Connection connection = connectionPool.getConnection()) {
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ps.setInt(2, productVariantId);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 0) {
+                    throw new DatabaseException("ItemEntry could not be inserted into the database");
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+
     }
 
     static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
@@ -57,4 +77,18 @@ public class ItemListMapper {
         return completeProducts;
     }
 
+
+    static void removeItemListOrderId(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM carport.itemlist WHERE order_id = ?;";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
     }
+
+}

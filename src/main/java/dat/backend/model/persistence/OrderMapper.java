@@ -64,13 +64,12 @@ public class OrderMapper {
     }
 
 
-
-    static void deleteOrders(int Id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM orders WHERE id = ?;";
+    static void removeOrder(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM carport.orders WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, Id);
+                ps.setInt(1, id);
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
