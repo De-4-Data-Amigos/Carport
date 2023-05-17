@@ -48,4 +48,31 @@ public class ProductMapper {
         }
         return productList;
     }
+
+    static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM carport.product WHERE id = ?;";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+    }
+
+    static void removeProductVariant(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "DELETE FROM carport.product_variant WHERE product_id = ?;";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+    }
+
 }

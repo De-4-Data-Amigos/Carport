@@ -57,6 +57,15 @@
                     <td class="text-center align-middle">${product.productId}</td>
                     <td class="text-center align-middle">${product.length}</td>
                     <td class="text-end align-middle">${product.width}</td>
+
+                    <td class="text-end align-middle">
+                        <form method="post" action="removeadminproductlist">
+                            <button type="submit"
+                                    class="ms-2 btn btn-primary btm-sm" name="id"
+                                    value="${product.id}">Fjern
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
