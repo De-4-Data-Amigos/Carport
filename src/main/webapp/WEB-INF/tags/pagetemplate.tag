@@ -83,7 +83,7 @@
                         </c:if>
 
                         <c:if test="${sessionScope.user.role.equalsIgnoreCase(\"admin\")}">
-                            <div class="mt-2">
+                            <div class="mt-2" style="margin-left:10px;" >
                                 <a href="adminhub">
                                     <h5>Admin</h5></a>
                             </div>
