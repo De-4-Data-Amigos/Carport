@@ -52,7 +52,7 @@ public class CarportBuilder extends HttpServlet {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         request.setAttribute("itemList", itemList);
-        request.getRequestDispatcher("checkout").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/orderConfirmation.jsp").forward(request,response);
 
 
 
