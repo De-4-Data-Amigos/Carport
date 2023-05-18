@@ -65,7 +65,7 @@
                                     class="ms-2 btn btn-primary btm-sm" name="id"
                                     value="${product.id}">Fjern</button>
 
-                            <button type="submit" formaction="editorder"
+                            <button type="submit" formaction="EditAdminProduct"
                                     class="ms-2 btn btn-primary btm-sm" name="id"
                                     value="${product.id}">Rediger</button>
 
