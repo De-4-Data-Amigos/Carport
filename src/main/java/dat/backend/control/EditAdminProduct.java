@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "EditAdminProduct", value = "/EditAdminProduct")
+@WebServlet(name = "EditAdminProduct", value = "editadminproduct")
 public class EditAdminProduct extends HttpServlet {
 
     private ConnectionPool connectionPool;
@@ -26,16 +26,10 @@ public class EditAdminProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int Id = Integer.parseInt(request.getParameter("id"));
-        int productId = Integer.parseInt(request.getParameter("product_id"));
-        int height = Integer.parseInt(request.getParameter("height"));
-        int width = Integer.parseInt(request.getParameter("width"));
-        int length = Integer.parseInt(request.getParameter("length"));
 
-        String newName = request.getParameter("name");
-        String newDescription = request.getParameter("description");
 
-        request.sendRedirect("editadminproducts").forward(request, response);
+
+        request.sendRedirect("editadminproduct.jsp").forward(request, response);
 
 
     }
