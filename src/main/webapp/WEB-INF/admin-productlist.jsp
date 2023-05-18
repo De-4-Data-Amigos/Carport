@@ -68,7 +68,6 @@
                                     class="ms-2 btn btn-primary btm-sm" name="id"
                                     value="${product.productVariantId}">Rediger</button>
                         </form>
-
                     </td>
                 </tr>
             </c:forEach>
