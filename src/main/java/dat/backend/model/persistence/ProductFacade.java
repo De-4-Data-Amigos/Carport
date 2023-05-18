@@ -36,11 +36,11 @@ public class ProductFacade {
         return ProductMapper.addProductVariant(productId ,length, width, height, connectionPool);
     }
 
-    public static void editProduct(String name, int id, String description, Unit unit, int pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
+    public static void editProduct(String name, int id, String description, Unit unit, float pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
         ProductMapper.editProduct(name, id, description, unit, pricePerUnit, type, connectionPool);
     }
 
-    public static void editProductVariant(int height, int width, int length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
+    public static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
         ProductMapper.editProductVariant(height, width, length, productId, id, connectionPool);
     }
 }

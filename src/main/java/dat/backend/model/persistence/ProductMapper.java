@@ -105,7 +105,7 @@ public class ProductMapper {
         }
     }
 
-    public static void editProduct(String name, int id, String description, String unit, int pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
+    public static void editProduct(String name, int id, String description, Unit unit, float pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "UPDATE product SET name = ?, description = ?, unit = ?, price_pr_unit = ?, type = ? WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -113,7 +113,7 @@ public class ProductMapper {
                 ps.setString(1, name);
                 ps.setString(2, description);
                 ps.setString(3, String.valueOf(unit));
-                ps.setInt(4, pricePerUnit);
+                ps.setFloat(4, pricePerUnit);
                 ps.setString(5, String.valueOf(type));
                 ps.setInt(6, id);
 
@@ -124,14 +124,14 @@ public class ProductMapper {
         }
     }
 
-    public static void editProductVariant(int height, int width, int length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
+    public static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "UPDATE product_variant set height = ?, width = ?, length = ? WHERE product_id = ? AND id = ?;";
 
         try(Connection connection = connectionPool.getConnection()){
             try (PreparedStatement ps = connection.prepareStatement(sql)){
-                ps.setInt(1, height);
-                ps.setInt(2, width);
-                ps.setInt(3, length);
+                ps.setFloat(1, height);
+                ps.setFloat(2, width);
+                ps.setFloat(3, length);
                 ps.setInt(4, productId);
                 ps.setInt(5, id);
 
