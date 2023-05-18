@@ -60,10 +60,15 @@
 
                     <td class="text-end align-middle">
                         <form method="post" action="removeadminproductlist">
+
                             <button type="submit"
                                     class="ms-2 btn btn-primary btm-sm" name="id"
-                                    value="${product.id}">Fjern
-                            </button>
+                                    value="${product.id}">Fjern</button>
+
+                            <button type="submit" formaction="editorder"
+                                    class="ms-2 btn btn-primary btm-sm" name="id"
+                                    value="${product.id}">Rediger</button>
+
                         </form>
                     </td>
                 </tr>
