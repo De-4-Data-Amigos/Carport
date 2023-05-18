@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductMapper {
-    static List<Product> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
+    static List<ProductAndProductVariant> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id;";
 
-        List<Product> productList = new ArrayList<>();
+        List<ProductAndProductVariant> productList = new ArrayList<>();
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -28,8 +28,9 @@ public class ProductMapper {
                     int productId = rs.getInt("product_id");
                     float length = rs.getFloat("length");
                     float width = rs.getFloat("width");
+                    float height = rs.getFloat("height");
 
-                    Product product = new Product(name, description, unit, pricePrUnit, type, id, productId, length, width);
+                    ProductAndProductVariant product = new ProductAndProductVariant(name, description, unit, pricePrUnit, type, id, productId, length, width, height);
                     productList.add(product);
 
                     //Vi bruger getString()-metoden til at konvertere enumværdien til en streng, ved linje 28-29 og 34-35.
@@ -41,6 +42,41 @@ public class ProductMapper {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
         return productList;
+    }
+
+    static ProductAndProductVariant getProduct(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id WHERE p.id = ?;";
+
+        ProductAndProductVariant product = null;
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String name = rs.getString("name");
+                    String description = rs.getString("description");
+                    String unitString = rs.getString("unit");
+                    Unit unit = Unit.valueOf(unitString);
+                    float pricePrUnit = rs.getFloat("price_pr_unit");
+                    String typeString = rs.getString("type");
+                    ProductType type = ProductType.valueOf(typeString);
+                    int productId = rs.getInt("product_id");
+                    float length = rs.getFloat("length");
+                    float width = rs.getFloat("width");
+                    float height = rs.getFloat("height");
+
+                    product = new ProductAndProductVariant(name, description, unit, pricePrUnit, type, id, productId, length, width, height);
+
+
+                    //Vi bruger getString()-metoden til at konvertere enumværdien til en streng, ved linje 28-29 og 34-35.
+                    // da Resultset ikke virker direkte med en konvertering af enumværdier til Java-enum typer.
+                    // getObject()-metoden bruges normalt til at hente værdier af primitiv datatype,
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+        return product;
     }
 
     static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
@@ -76,7 +112,7 @@ public class ProductMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, name);
                 ps.setString(2, description);
-                ps.setString(3, unit);
+                ps.setString(3, String.valueOf(unit));
                 ps.setInt(4, pricePerUnit);
                 ps.setString(5, String.valueOf(type));
                 ps.setInt(6, id);
@@ -157,11 +193,3 @@ public class ProductMapper {
         }
         return productVariantId;
     }
-
-
-
-
-
-}
-
-
