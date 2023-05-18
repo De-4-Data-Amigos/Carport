@@ -51,6 +51,7 @@
                     <td class="text-center align-middle">${order.length}</td>
                     <td class="text-end align-middle">${order.width}</td>
                     <td class="text-end align-middle">
+
                         <form method="post" action="removeadminorder">
                             <button type="submit"
                                     class="ms-2 btn btn-primary btm-sm" name="id"
