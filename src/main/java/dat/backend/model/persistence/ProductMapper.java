@@ -68,23 +68,24 @@ public class ProductMapper {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
     }
-    public static void editAdminProduct(int id, ConnectionPool connectionPool) {
+    public static void editAdminProduct(int id, int productId, int pricePerUnit, int width, int length, String description, String newName, String newUnit, ConnectionPool connectionPool) throws DatabaseException {
         String sql = ""
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int Id = Integer.parseInt(request.getParameter("id"));
-                    int productId = Integer.parseInt(request.getParameter("product_id"));
-                    int pricePerUnit = Integer.parseInt(request.getParameter("price_per_unit"));
-                    int width = Integer.parseInt(request.getParameter("width"));
-                    int length = Integer.parseInt(request.getParameter("length"));
-
-                    String newDescription = request.getHeader("description");
-                    String newName = request.getParameter("namename");
-                    String newUnit = request.getParameter("unit");
+               ps.setInt(1, id);
+               ps.setInt(2, productId);
+               ps.setInt(3, pricePerUnit);
+               ps.setInt(4, width);
+               ps.setInt(5, length);
+               ps.setString(6, description);
+               ps.setString(7, newName);
+               ps.setString(8, newUnit);
+                ps.executeUpdate();
     }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
 }
 
 

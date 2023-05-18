@@ -34,7 +34,7 @@ public class EditAdminProduct extends HttpServlet {
 
         int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));
 
-        String newDescription = request.getHeader("description")
+        String newDescription = request.getHeader("description");
         String newName = request.getParameter("namename");
         String newUnit = request.getParameter("unit");
 
