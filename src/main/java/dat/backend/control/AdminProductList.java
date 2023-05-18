@@ -40,7 +40,7 @@ public class AdminProductList extends HttpServlet {
                     request.setAttribute("errormessage", e.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
-                request.setAttribute("productList", products);
+                request.setAttribute("adminProductList", products);
                 request.getRequestDispatcher("WEB-INF/admin-productlist.jsp").forward(request, response);
 
             }
