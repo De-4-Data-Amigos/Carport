@@ -61,8 +61,8 @@ public class AdminProductList extends HttpServlet {
         }
 
         try {
-            List<Product> productList = ProductFacade.getAllProducts(connectionPool);
-            request.setAttribute("productList", productList); // Gem produktlisten i request
+            List<ProductAndProductVariant> productList = ProductFacade.getAllProducts(connectionPool);
+            request.setAttribute("adminProductList", productList); // Gem produktlisten i request
             request.getRequestDispatcher("admin-productlist.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
