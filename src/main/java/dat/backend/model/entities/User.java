@@ -28,7 +28,7 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phonenumber = phonenumber;
-
+        this.role = "user";
     }
 
     public int getUserId() {

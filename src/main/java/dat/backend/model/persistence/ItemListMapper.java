@@ -50,7 +50,7 @@ public class ItemListMapper {
     }
 
     static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT il.id, order_id, product_variant_id, product_id, height, width, length, product.name, description, price_pr_unit, unit, type, count(*) as amount FROM carport.itemlist as il INNER JOIN carport.product_variant as pvar on il.product_variant_id = pvar.id INNER JOIN carport.product as product on pvar.product_id = product.id where order_id = ? group by product_variant_id;";
+        String sql = "SELECT il.id, order_id, product_variant_id, product_id, height, width, length, product.name, description, price_pr_unit, unit, type, count(*) as amount FROM itemlist as il INNER JOIN product_variant as pvar on il.product_variant_id = pvar.id INNER JOIN product as product on pvar.product_id = product.id where order_id = ? group by product_variant_id;";
        List <CompleteProduct> completeProducts = new ArrayList<>();
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -77,7 +77,7 @@ public class ItemListMapper {
 
 
     static void removeItemListOrderId(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM carport.itemlist WHERE order_id = ?;";
+        String sql = "DELETE FROM itemlist WHERE order_id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -88,5 +88,29 @@ public class ItemListMapper {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
     }
+
+    static ItemEntry getItemEntryById(int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "select * from itemlist where id = ?";
+
+      ItemEntry itemEntry = null;
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderId = rs.getInt("order_id");
+                    int productVariantId = rs.getInt("productVariant_id");
+                    itemEntry = new ItemEntry(id,orderId,productVariantId);
+
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+        return itemEntry;
+    }
+
 
 }
