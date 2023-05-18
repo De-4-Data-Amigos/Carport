@@ -75,24 +75,41 @@ public class ProductMapper {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
     }
-    public static void editAdminProduct(int id, int productId, int pricePerUnit, int width, int length, String description, String newName, String newUnit, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = ""
+
+    public static void editProduct(String name, int id, String description, String unit, int pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "UPDATE carport.product SET name = ?, description = ?, unit = ?, price_pr_unit = ?, type = ? WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-               ps.setInt(1, id);
-               ps.setInt(2, productId);
-               ps.setInt(3, pricePerUnit);
-               ps.setInt(4, width);
-               ps.setInt(5, length);
-               ps.setString(6, description);
-               ps.setString(7, newName);
-               ps.setString(8, newUnit);
+                ps.setString(1, name);
+                ps.setString(2, description);
+                ps.setString(3, unit);
+                ps.setInt(4, pricePerUnit);
+                ps.setString(5, String.valueOf(type));
+                ps.setInt(6, id);
+
                 ps.executeUpdate();
-    }
+            }
         } catch (SQLException e) {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
-}
+    }
 
+    public static void editProductVariant(int height, int width, int length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "UPDATE carport.product_variant set height = ?, width = ?, length = ? WHERE product_id = ? AND id = ?;";
+
+        try(Connection connection = connectionPool.getConnection()){
+            try (PreparedStatement ps = connection.prepareStatement(sql)){
+                ps.setInt(1, height);
+                ps.setInt(2, width);
+                ps.setInt(3, length);
+                ps.setInt(4, productId);
+                ps.setInt(5, id);
+
+                ps.executeUpdate();
+            }
+        }catch (SQLException e){
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+    }
 }
