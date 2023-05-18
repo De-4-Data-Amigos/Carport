@@ -1,7 +1,9 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.ItemListFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -31,15 +33,22 @@ public class EditAdminProduct extends HttpServlet {
         int pricePerUnit = Integer.parseInt(request.getParameter("price_per_unit"));
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
-
-        int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));
-
         String newDescription = request.getHeader("description");
-        String newName = request.getParameter("namename");
+        String newName = request.getParameter("name");
         String newUnit = request.getParameter("unit");
 
+        try {
+            List<ItemList> adminItems = ItemListFacade.editAdminProduct(connectionPool);
 
-        request.sendRedirect("editadminproduct.jsp").forward(request, response);
+            request.setAttribute("adminItems", adminItems); //gemmer adminItems i request-scope
+            it
+
+        } catch (DatabaseException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+
+                request.sendRedirect("editadminproduct.jsp").forward(request, response);
 
 
     }
