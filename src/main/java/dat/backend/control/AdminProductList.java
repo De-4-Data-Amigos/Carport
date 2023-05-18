@@ -1,14 +1,11 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.OrderView;
 import dat.backend.model.entities.Product;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.AdminFacade;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.ProductFacade;
-import dat.backend.model.persistence.ProductMapper;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

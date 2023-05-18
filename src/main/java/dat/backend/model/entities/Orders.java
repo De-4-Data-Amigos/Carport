@@ -1,13 +1,12 @@
 package dat.backend.model.entities;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
 import dat.backend.model.services.CarportBuilderHelper;
 
-import java.sql.Connection;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class Orders {
 
@@ -73,4 +72,28 @@ public class Orders {
         OrderFacade.setPrice(id, price, connectionPool);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Orders orders = (Orders) o;
+        return id == orders.id && user_id == orders.user_id && Float.compare(orders.price, price) == 0 && length == orders.length && width == orders.width;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user_id, price, length, width);
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", timestamp=" + timestamp +
+                ", price=" + price +
+                ", length=" + length +
+                ", width=" + width +
+                '}';
+    }
 }

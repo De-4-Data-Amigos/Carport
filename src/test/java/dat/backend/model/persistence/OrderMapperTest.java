@@ -1,9 +1,8 @@
-package dat.backend.persistence;
+package dat.backend.model.persistence;
 
+import dat.backend.model.entities.Orders;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.UserFacade;
 import dat.backend.model.services.RegisterHelper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,14 +14,14 @@ import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserMapperTest {
-    // TODO: Change mysql login credentials if needed below
-
+class OrderMapperTest {
     private final static String USER = "root";
     private final static String PASSWORD = "root";
     private final static String URL = "jdbc:mysql://localhost:3306/carport_test?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
 
     private static ConnectionPool connectionPool;
+
+    private static User user;
 
     @BeforeAll
     public static void setUpClass() {
@@ -34,7 +33,7 @@ class UserMapperTest {
                 stmt.execute("CREATE DATABASE  IF NOT EXISTS carport_test;");
 
                 // TODO: Create user table. Add your own tables here
-                stmt.execute("CREATE TABLE IF NOT EXISTS carport_test.user LIKE carport.user;");
+                stmt.execute("CREATE TABLE IF NOT EXISTS carport_test.orders LIKE carport.orders;");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -53,47 +52,37 @@ class UserMapperTest {
 
                 // TODO: Insert a few users - insert rows into your own tables here
                 stmt.execute("insert into user (email, password, firstname, lastname, phonenumber) " +
-                        "values ('user@mail.com','"+ RegisterHelper.hashPassword("1234") + "','user', 'vic','245534'),('admin@mail.com','"+ RegisterHelper.hashPassword("1234") + " ','admin','den', '744554'), ('ben@mail.com',' "+ RegisterHelper.hashPassword("1234") + " ','user', 'ras', '647476')");
+                        "values ('user@mail.com','" + RegisterHelper.hashPassword("1234") + "','user', 'vic','245534'),('admin@mail.com','" + RegisterHelper.hashPassword("1234") + " ','admin','den', '744554'), ('ben@mail.com',' " + RegisterHelper.hashPassword("1234") + " ','user', 'ras', '647476')");
+                user = UserFacade.login("user@mail.com","1234", connectionPool);
             }
+
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
             fail("Database connection failed");
+        } catch (DatabaseException databaseException) {
+            System.out.println(databaseException.getMessage());
+            fail("Database failed");
         }
     }
 
+
     @Test
-    void testConnection() throws SQLException {
-        Connection connection = connectionPool.getConnection();
-        assertNotNull(connection);
-        if (connection != null) {
-            connection.close();
-        }
+    void createOrder() throws DatabaseException {
+        Orders newOrder = new Orders(369,400, user,  connectionPool);
+        Orders expectedOrder =OrderFacade.getOrderById (newOrder.getId(), connectionPool);
+        assertEquals(expectedOrder, newOrder);
+
     }
 
     @Test
-    void login() throws DatabaseException {
-        User expectedUser = new User("user@mail.com", "1234", "user", "vic", 245534);
-        User actualUser = UserFacade.login("user@mail.com", "1234", connectionPool);
-        assertEquals(expectedUser, actualUser);
-    }
+    void setPrice() throws DatabaseException {
+        float newPrice = 11000;
+        Orders newOrder = new Orders(400,400, user,  connectionPool);
+        newOrder.setDbPrice(newPrice,connectionPool);
+        Orders order = OrderFacade.getOrderById(newOrder.getId(),connectionPool);
 
-    @Test
-    void invalidPasswordLogin() throws DatabaseException {
-        assertThrows(DatabaseException.class, () -> UserFacade.login("user@mail.com", "123", connectionPool));
-    }
-
-    @Test
-    void invalidUserNameLogin() throws DatabaseException {
-        assertThrows(DatabaseException.class, () -> UserFacade.login("bob@mail.com", "1234", connectionPool));
-    }
-
-    @Test
-    void createUser() throws DatabaseException {
-        User newUser = UserFacade.createUser("ben@mail.com","1234","user", "ras", 647476,  connectionPool);
-        User logInUser = UserFacade.login("ben@mail.com", "1234", connectionPool);
-        User expectedUser = new User("ben@mail.com","1234","user", "ras", 647476);
-        assertEquals(expectedUser, newUser);
-        assertEquals(expectedUser, logInUser);
+        assertEquals(newPrice, newOrder.getPrice());
+        assertEquals(newPrice, order.getPrice());
 
     }
 }

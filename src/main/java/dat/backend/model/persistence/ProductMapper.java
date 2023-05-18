@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ProductMapper {
     static List<Product> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT * FROM carport.product as p INNER JOIN carport.product_variant as pv on pv.product_id = p.id;";
+        String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id;";
 
         List<Product> productList = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class ProductMapper {
     }
 
     static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM carport.product WHERE id = ?;";
+        String sql = "DELETE FROM product WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -63,7 +63,7 @@ public class ProductMapper {
     }
 
     static void removeProductVariant(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM carport.product_variant WHERE product_id = ?;";
+        String sql = "DELETE FROM product_variant WHERE product_id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

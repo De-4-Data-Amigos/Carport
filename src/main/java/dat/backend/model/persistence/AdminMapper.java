@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AdminMapper {
     static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT * FROM carport.user;";
+        String sql = "SELECT * FROM user;";
 
         List<User> userList = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class AdminMapper {
 
     static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "SELECT * FROM carport.orders;";
+        String sql = "SELECT * FROM orders;";
 
         List<Orders> orderList = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class AdminMapper {
 
     static List<OrderView> getAllOrdersAndUserInfo(ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "SELECT orders.*, user.email FROM carport.orders INNER JOIN carport.user ON orders.user_id = user.user_id;";
+        String sql = "SELECT orders.*, user.email FROM orders INNER JOIN user ON orders.user_id = user.user_id;";
 
         List<OrderView> orderViewList = new ArrayList<>();
 
