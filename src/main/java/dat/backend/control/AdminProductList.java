@@ -3,6 +3,7 @@ package dat.backend.control;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.OrderView;
 import dat.backend.model.entities.Product;
+import dat.backend.model.entities.ProductAndProductVariant;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.AdminFacade;
@@ -31,7 +32,7 @@ public class AdminProductList extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
-                List<Product> products = null;
+                List<ProductAndProductVariant> products = null;
                 try {
                     products = ProductFacade.getAllProducts(connectionPool);
 

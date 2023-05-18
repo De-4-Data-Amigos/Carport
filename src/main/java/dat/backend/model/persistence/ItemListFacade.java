@@ -22,7 +22,4 @@ public class ItemListFacade {
         ItemListMapper.removeItemListOrderId(id, connectionPool);
     }
 
-    public static void editAdminProduct(int id, int productId, int height, int width, int length, ConnectionPool connectionPool) throws DatabaseException {
-        ItemListMapper.editAdminProduct(id, productId, height, width, length,connectionPool);
-    }
 }
