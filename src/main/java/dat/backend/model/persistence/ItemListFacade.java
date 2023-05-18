@@ -10,6 +10,7 @@ import java.util.List;
 public class ItemListFacade {
 
     public static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
+
         return ItemListMapper.getCompletProduct(order, connectionPool);
     }
 
