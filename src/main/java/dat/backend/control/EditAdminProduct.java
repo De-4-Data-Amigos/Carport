@@ -1,16 +1,18 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.ItemListFacade;
+import dat.backend.model.persistence.ProductFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "EditAdminProduct", value = "editadminproduct")
+@WebServlet(name = "EditAdminProduct", value = "/editadminproduct")
 public class EditAdminProduct extends HttpServlet {
 
     private ConnectionPool connectionPool;
@@ -22,33 +24,55 @@ public class EditAdminProduct extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            if (user.getRole().equalsIgnoreCase("admin")) {
+                ProductAndProductVariant products = null;
+                int id = Integer.parseInt(request.getParameter("id"));
+                try {
+                    products = ProductFacade.getProduct(id, connectionPool);
 
+                } catch (DatabaseException e) {
+                    request.setAttribute("errormessage", e.getMessage());
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                }
+                request.setAttribute("productList", products);
+                request.getRequestDispatcher("WEB-INF/admin-editproduct.jsp").forward(request, response);
+
+            }
+        }
+
+        request.setAttribute("errormessage", "Du er ikke en admin");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int Id = Integer.parseInt(request.getParameter("id"));
-        int productId = Integer.parseInt(request.getParameter("product_id"));
-        int pricePerUnit = Integer.parseInt(request.getParameter("price_per_unit"));
-        int width = Integer.parseInt(request.getParameter("width"));
-        int length = Integer.parseInt(request.getParameter("length"));
-        String newDescription = request.getHeader("description");
-        String newName = request.getParameter("name");
-        String newUnit = request.getParameter("unit");
 
         try {
-            List<ItemList> adminItems = ItemListFacade.editAdminProduct(connectionPool);
+            int id = Integer.parseInt(request.getParameter("id"));
+            int productId = Integer.parseInt(request.getParameter("product_id"));
+            int pricePerUnit = Integer.parseInt(request.getParameter("price_per_unit"));
+            int width = Integer.parseInt(request.getParameter("width"));
+            int height = Integer.parseInt(request.getParameter("height"));
+            int length = Integer.parseInt(request.getParameter("length"));
+            String description = request.getHeader("description");
+            String name = request.getParameter("name");
+            Unit unit = Unit.valueOf(request.getParameter("unit"));
+            ProductType type = ProductType.valueOf(request.getParameter("type"));
 
-            request.setAttribute("adminItems", adminItems); //gemmer adminItems i request-scope
-            it
+            String edit = request.getParameter("edit");
+
+            ProductFacade.editProduct(name,id,description,unit,pricePerUnit,type,connectionPool);
+            ProductFacade.editProductVariant(height,width,length,productId,id,connectionPool);
 
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
-                request.sendRedirect("editadminproduct.jsp").forward(request, response);
+        response.sendRedirect("admin-editproduct");
 
 
     }

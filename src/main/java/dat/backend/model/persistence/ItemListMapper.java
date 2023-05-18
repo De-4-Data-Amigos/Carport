@@ -77,7 +77,7 @@ public class ItemListMapper {
 
 
     static void removeItemListOrderId(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "DELETE FROM itemlist WHERE order_id = ?;";
+        String sql = "DELETE FROM carport.itemlist WHERE order_id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -89,28 +89,3 @@ public class ItemListMapper {
         }
     }
 
-    static ItemEntry getItemEntryById(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "select * from itemlist where id = ?";
-
-      ItemEntry itemEntry = null;
-
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, id);
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int orderId = rs.getInt("order_id");
-                    int productVariantId = rs.getInt("productVariant_id");
-                    itemEntry = new ItemEntry(id,orderId,productVariantId);
-
-
-                }
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
-        }
-        return itemEntry;
-    }
-
-
-}
