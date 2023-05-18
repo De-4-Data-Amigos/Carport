@@ -107,22 +107,20 @@ public class ProductMapper {
     }
     public static void editAdminProduct(int id, ConnectionPool connectionPool) {
         String sql = ""
-                
+
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                     int Id = Integer.parseInt(request.getParameter("id"));
-                     int productId = Integer.parseInt(request.getParameter("product_id"));
-                     int height = Integer.parseInt(request.getParameter("height"));
-                     int width = Integer.parseInt(request.getParameter("width"));
-                     int length = Integer.parseInt(request.getParameter("length"));
+                    int Id = Integer.parseInt(request.getParameter("id"));
+                    int productId = Integer.parseInt(request.getParameter("product_id"));
+                    int pricePerUnit = Integer.parseInt(request.getParameter("price_per_unit"));
+                    int width = Integer.parseInt(request.getParameter("width"));
+                    int length = Integer.parseInt(request.getParameter("length"));
 
-                     int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));
-
-                     String newName = request.getParameter("firstname");
-                     String newLastName = request.getParameter("lastname");
-                     String newEmail = request.getParameter("email");
+                    String newDescription = request.getHeader("description");
+                    String newName = request.getParameter("namename");
+                    String newUnit = request.getParameter("unit");
     }
 }
 
