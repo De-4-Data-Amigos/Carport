@@ -27,16 +27,16 @@ public class EditAdminProduct extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
-                ProductAndProductVariant products = null;
+                ProductAndProductVariant productAndProductVariant = null;
                 int id = Integer.parseInt(request.getParameter("id"));
                 try {
-                    products = ProductFacade.getProduct(id, connectionPool);
+                    productAndProductVariant = ProductFacade.getProduct(id, connectionPool);
 
                 } catch (DatabaseException e) {
                     request.setAttribute("errormessage", e.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
-                request.setAttribute("productList", products);
+                request.setAttribute("product", productAndProductVariant);
                 request.getRequestDispatcher("WEB-INF/admin-editproduct.jsp").forward(request, response);
 
             }
@@ -51,21 +51,25 @@ public class EditAdminProduct extends HttpServlet {
 
 
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            int productId = Integer.parseInt(request.getParameter("product_id"));
-            int pricePerUnit = Integer.parseInt(request.getParameter("price_per_unit"));
-            int width = Integer.parseInt(request.getParameter("width"));
-            int height = Integer.parseInt(request.getParameter("height"));
-            int length = Integer.parseInt(request.getParameter("length"));
-            String description = request.getHeader("description");
-            String name = request.getParameter("name");
-            Unit unit = Unit.valueOf(request.getParameter("unit"));
-            ProductType type = ProductType.valueOf(request.getParameter("type"));
 
-            String edit = request.getParameter("edit");
 
-            ProductFacade.editProduct(name,id,description,unit,pricePerUnit,type,connectionPool);
-            ProductFacade.editProductVariant(height,width,length,productId,id,connectionPool);
+            String editName = request.getParameter("editName");
+            String editDescription = request.getParameter("editDescription");
+            Unit editUnit = Unit.valueOf(request.getParameter("editUnit"));
+            float editPricePrUnit = Float.parseFloat(request.getParameter("editPricePrUnit"));
+            ProductType editType = ProductType.valueOf(request.getParameter("editType"));
+            float editLength = Float.parseFloat(request.getParameter("editLength"));
+            float editWidth = Float.parseFloat(request.getParameter("editWidth"));
+            float editHeight = Float.parseFloat(request.getParameter("editHeight"));
+
+            String[] editButton = request.getParameter("editButton").split("-");
+            // Split prøver at finde tegnet i .jsp'en og splitter det op i et array, så index 0 holder produktvariantId og index 1 holder produkt id som en String.
+
+            int productVariantId = Integer.parseInt(editButton[0]);
+            int productId = Integer.parseInt(editButton[1]);
+
+            ProductFacade.editProduct(editName, productId,editDescription,editUnit,editPricePrUnit,editType, connectionPool);
+            ProductFacade.editProductVariant(editHeight,editWidth,editLength,productId,productVariantId,connectionPool);
 
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
