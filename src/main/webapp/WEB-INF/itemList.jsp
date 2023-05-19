@@ -56,6 +56,12 @@
             </c:forEach>
             </tbody>
         </table>
+        <form method="get" action="itemlist">
+            <button type="submit" class="btn btn-primary" name="action" value="download">Download CSV</button>
+        </form>
+
+
+
     </jsp:body>
 
 </t:pagetemplate>
