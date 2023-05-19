@@ -7,19 +7,19 @@ import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.services.CarportBuilderHelper;
+import dat.backend.model.services.CsvHelper;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.net.ConnectException;
-import java.sql.Connection;
 import java.util.List;
 
 @WebServlet(name = "ItemListServlet", value = "/itemlist")
 public class ItemListServlet extends HttpServlet {
 
     private ConnectionPool connectionPool;
+    private List<CompleteProduct> itemList;
 
     @Override
     public void init() throws ServletException {
@@ -27,7 +27,11 @@ public class ItemListServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if(action.equalsIgnoreCase("download")){
+            String csv = CsvHelper.convertItemListToCSV(itemList);
+            CsvHelper.sendDownloadCSVFileFromText(csv, response);
+        }
     }
 
     @Override
@@ -43,7 +47,7 @@ public class ItemListServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         Orders order = (Orders) session.getAttribute("order");
 
-        List<CompleteProduct> itemList = null;
+        itemList = null;
         try {
             itemList = CarportBuilderHelper.generateItemList(width, length, order);
         } catch (DatabaseException e) {
