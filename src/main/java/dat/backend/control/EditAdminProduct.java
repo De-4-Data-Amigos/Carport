@@ -76,7 +76,7 @@ public class EditAdminProduct extends HttpServlet {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
-        response.sendRedirect("admin-editproduct");
+        response.sendRedirect("admin-productlist");
 
 
     }
