@@ -21,41 +21,49 @@
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Admin Orders
+
     </jsp:attribute>
 
 
     <jsp:body>
 
-        <div class="container">
-            <h1>Stykliste</h1>
+        <div class="container py-4">
+
+            <div class="row align-items-md-stretch">
+                <div class="col-md-8">
+                    <div class="h-100 p-5 bg-light border rounded-3">
+                        <form method="post" action="______________">
+
+                        <h2>Tak for din bestilling!</h2><br>
+
+                            Vi er enormt glade for at du har valgt Fog som leverandør til netop dit carport-projekt.<br>
+                           <br>
+                           Hos os er den personlige kontakt og rådgivning vores absolutte første prioritet, så derfor vil en af vores
+                           dygtige medarbejdere kontakte dig indenfor meget kort tid, såfremt du har bestilt indenfor
+                           vores bemandingstid <img src="images/tlf.png" width="17.5px;" class="img-fluid align-left"/>9-18.<br>
+                           <br>
+                            <em>OBS: Er din bestilling lavet udenfor arbejdstid, så vil vores medarbejder ringe dig op snarest og guide dig tilbage til dette betalingsflow.</em><br>
+                            <br>
+
+                            Når alt er på plads og Fog har modtaget betaling, så vil du over telefonen modtage din egen personlige<br> <b>8-cifrede kode</b> som bruges nederst på denne side til at låse op for styklisten. Afvent venligst koden fra medarbejderen du er i kontakt med:<br>
+                            <br>
+                          <%--  <label class="form-label">Fornavn</label> --%>
+
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"></label>
+                                    <input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelpBlock">
+                                    <div id="passwordHelpBlock" class="form-text">Afslut derefter med 'Bekræft' knappen for at komme til din personlige stykliste<br> samt stl-fil, såfremt du ønsker en 3D version af din carport.</div><br>
+                                    <button type="submit" class="btn btn-info">Bekræft</button>
+                                </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <table class="table table-striped mt-4">
-            <thead>
-            <tr>
-                <th class="text-start">Navn</th>
-                <th class="text-center">Længde</th>
-                <th class="text-center">Antal</th>
-                <th class="text-center">Enhed</th>
-                <th class="text-center">Beskrivelse</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="item" items="${requestScope.itemList}">
-                <tr>
-                    <td class="text-start align-middle"> ${item.name}</td>
-                    <td class="text-center align-middle"> ${item.length}</td>
-                    <td class="text-center align-middle">${item.amount}</td>
-                    <td class="text-center align-middle">${item.unit}</td>
-                    <td class="text-end align-middle">${item.description}</td>
-
-
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
     </jsp:body>
 
 </t:pagetemplate>

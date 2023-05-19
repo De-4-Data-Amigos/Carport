@@ -53,7 +53,8 @@
 
 
                         <p><em>En ordrebekræftelse sendes til din email.</em></p>
-                        <p><em>*Bemærk at prisen vil variere afhængigt af endelig<br> bestilling efter kontakt med salgsafdeling</em></p>
+                        <p><em>*Bemærk at prisen vil variere afhængigt af endelig<br> bestilling efter kontakt med salgsafdeling.<br>
+                            Du vil blive sat i kontakt med disse så snart din bestilling er valgt bekræftet.</em></p>
 
                     </div>
 
