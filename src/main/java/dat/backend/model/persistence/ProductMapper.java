@@ -55,6 +55,7 @@ public class ProductMapper {
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     String name = rs.getString("name");
