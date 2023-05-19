@@ -48,7 +48,7 @@ public class ProductMapper {
     }
 
     static ProductAndProductVariant getProduct(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id WHERE p.id = ?;";
+        String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id WHERE pv.id = ?;";
 
         ProductAndProductVariant product = null;
 
@@ -129,15 +129,14 @@ public class ProductMapper {
     }
 
     public static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "UPDATE carport.product_variant set height = ?, width = ?, length = ? WHERE product_id = ? AND id = ?;";
-
+        String sql = "UPDATE product_variant set height = ?, width = ?, length = ? WHERE id = ?;";
+                        //UPDATE product_variant SET height = ?, `width` = ?, `length` = '8' WHERE (`id` = '24');
         try(Connection connection = connectionPool.getConnection()){
             try (PreparedStatement ps = connection.prepareStatement(sql)){
                 ps.setFloat(1, height);
                 ps.setFloat(2, width);
                 ps.setFloat(3, length);
-                ps.setInt(4, productId);
-                ps.setInt(5, id);
+                ps.setInt(4, id);
 
                 ps.executeUpdate();
             }
