@@ -33,24 +33,9 @@ public class CarportBuilder extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] split = request.getParameter("dimensions").split(":");
-        String widthString = split[0];
-        String lengthString = split[1];
+        String forward = request.getParameter("dimensions");
+        request.getSession().setAttribute("dimensions", forward);
 
-        int width = Integer.parseInt(widthString);
-        int length = Integer.parseInt(lengthString);
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        Orders order = (Orders) session.getAttribute("order");
-
-        List<CompleteProduct> itemList = null;
-        try {
-            itemList = CarportBuilderHelper.generateItemList(width, length, order);
-        } catch (DatabaseException e) {
-            request.setAttribute("errormessage", e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }
-        request.setAttribute("itemList", itemList);
         request.getRequestDispatcher("WEB-INF/orderConfirmation.jsp").forward(request,response);
 
 
