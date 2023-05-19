@@ -32,8 +32,6 @@
             <div class="row align-items-md-stretch">
                 <div class="col-md-8">
                     <div class="h-100 p-5 bg-light border rounded-3">
-                        <form method="post" action="______________">
-
                         <h2>Tak for din bestilling!</h2><br>
 
                             Vi er enormt glade for at du har valgt Fog som leverandør til netop dit carport-projekt.<br>
@@ -49,14 +47,14 @@
                             <br>
                           <%--  <label class="form-label">Fornavn</label> --%>
 
-                            <form>
+                            <form method="post" action="itemlist">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label"></label>
+                                    <label for="inputPassword" class="form-label"></label>
                                     <input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelpBlock">
                                     <div id="passwordHelpBlock" class="form-text">Afslut derefter med 'Bekræft' knappen for at komme til din personlige stykliste<br> samt stl-fil, såfremt du ønsker en 3D version af din carport.</div><br>
                                     <button type="submit" class="btn btn-info">Bekræft</button>
                                 </div>
-                        </form>
+                            </form>
 
                     </div>
                 </div>
