@@ -5,14 +5,24 @@ private int id;
 private int productId;
 private float length;
 private float width;
+private float height;
 
-    public ProductVariant(int id, int productId, float length, float width) {
+
+    public ProductVariant(int id, int productId, float length, float width, float height) {
         this.id = id;
         this.productId = productId;
         this.length = length;
         this.width = width;
+        this.height = height;
     }
 
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
 
     public int getId() {
         return id;

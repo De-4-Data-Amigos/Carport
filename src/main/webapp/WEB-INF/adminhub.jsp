@@ -20,14 +20,21 @@
         <div class="container">
         <h1 class="text-center">Admin Hub</h1>
         <div class="row justify-content-center">
+
             <div class="col-md-auto">
                 <a href="${pageContext.request.contextPath}/admin-users" class="h3"><b>Admin users</b></a><br/>
             </div>
+
             <div class="col-md-auto">
                 <a href="${pageContext.request.contextPath}/admin-orders" class="h3"><b>Admin orders</b></a><br/>
             </div>
+
             <div class="col-md-auto">
                 <a href="${pageContext.request.contextPath}/admin-productlist" class="h3"><b>Produktliste</b></a><br/>
+            </div>
+
+            <div class="col-md-auto">
+                <a href="${pageContext.request.contextPath}/adminAddProduct" class="h3"><b>Tilføj Produkt</b></a><br/>
             </div>
         </div>
         <div class="container py-4">
