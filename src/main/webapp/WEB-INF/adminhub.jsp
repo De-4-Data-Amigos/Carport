@@ -22,11 +22,11 @@
         <div class="row justify-content-center">
 
             <div class="col-md-auto">
-                <a href="${pageContext.request.contextPath}/admin-users" class="h3"><b>Admin users</b></a><br/>
+                <a href="${pageContext.request.contextPath}/admin-users" class="h3"><b>Kundeliste</b></a><br/>
             </div>
 
             <div class="col-md-auto">
-                <a href="${pageContext.request.contextPath}/admin-orders" class="h3"><b>Admin orders</b></a><br/>
+                <a href="${pageContext.request.contextPath}/admin-orders" class="h3"><b>Order</b></a><br/>
             </div>
 
             <div class="col-md-auto">
