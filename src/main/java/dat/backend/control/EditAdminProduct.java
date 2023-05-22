@@ -52,7 +52,6 @@ public class EditAdminProduct extends HttpServlet {
 
         try {
 
-
             String editName = request.getParameter("editName");
             String editDescription = request.getParameter("editDescription");
             Unit editUnit = Unit.valueOf(request.getParameter("editUnit"));

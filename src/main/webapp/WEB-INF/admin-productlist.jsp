@@ -59,15 +59,15 @@
                     <td class="text-end align-middle">${product.width}</td>
 
                     <td class="text-end align-middle">
-                        <form method="post" action="removeadminproductlist">
-                            <button type="submit"
-                                    class="ms-2 btn btn-info btm-sm" name="id"
-                                    value="${product.productVariantId}">Fjern</button>
+                        <div class="d-flex justify-content-start">
+                            <form method="get" action="editadminproduct">
+                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Opdater</button>
+                            </form>
+                            <form method="post" action="removeadminproductlist">
+                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Fjern</button>
+                            </form>
 
-                            <button type="submit" formmethod="get" formaction="editadminproduct"
-                                    class="ms-2 btn btn-primary btm-sm" name="id"
-                                    value="${product.productVariantId}">Rediger</button>
-                        </form>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>

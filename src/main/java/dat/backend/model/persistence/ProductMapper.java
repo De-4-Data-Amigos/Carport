@@ -105,25 +105,8 @@ public class ProductMapper {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
     }
-    public static void editAdminProduct(int id, int productId, int pricePerUnit, int width, int length, String description, String newName, String newUnit, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = ""
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-               ps.setInt(1, id);
-               ps.setInt(2, productId);
-               ps.setInt(3, pricePerUnit);
-               ps.setInt(4, width);
-               ps.setInt(5, length);
-               ps.setString(6, description);
-               ps.setString(7, newName);
-               ps.setString(8, newUnit);
-                ps.executeUpdate();
-    }
-        } catch (SQLException e) {
-            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
-        }
-}
+
 
     public static void editProduct(String name, int id, String description, Unit unit, float pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "UPDATE product SET name = ?, description = ?, unit = ?, price_pr_unit = ?, type = ? WHERE id = ?;";
@@ -147,8 +130,8 @@ public class ProductMapper {
     public static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "UPDATE product_variant set height = ?, width = ?, length = ? WHERE product_id = ? AND id = ?;";
 
-        try(Connection connection = connectionPool.getConnection()){
-            try (PreparedStatement ps = connection.prepareStatement(sql)){
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setFloat(1, height);
                 ps.setFloat(2, width);
                 ps.setFloat(3, length);
@@ -157,10 +140,10 @@ public class ProductMapper {
 
                 ps.executeUpdate();
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
-}
+    }
 
 
     public static int addProduct(String name, String description, Unit unit, float pricePrUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
@@ -213,3 +196,4 @@ public class ProductMapper {
         }
         return productVariantId;
     }
+}
