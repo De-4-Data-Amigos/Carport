@@ -53,7 +53,7 @@
                     <td class="text-end align-middle">
                         <form method="post" action="removeadminorder">
                             <button type="submit"
-                                    class="ms-2 btn btn-primary btm-sm" name="id"
+                                    class="ms-2 btn btn-info btm-sm" name="id"
                                     value="${order.orderId}">Fjern
                             </button>
                         </form>
