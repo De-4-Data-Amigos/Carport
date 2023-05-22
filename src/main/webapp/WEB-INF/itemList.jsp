@@ -38,7 +38,7 @@
                 <th class="text-center">Længde</th>
                 <th class="text-center">Antal</th>
                 <th class="text-center">Enhed</th>
-                <th class="text-center">Beskrivelse</th>
+                <th class="text-end">Beskrivelse</th>
 
             </tr>
             </thead>

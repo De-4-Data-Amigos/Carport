@@ -50,24 +50,20 @@
                     <td class="text-center align-middle">${order.price}</td>
                     <td class="text-center align-middle">${order.length}</td>
                     <td class="text-end align-middle">${order.width}</td>
-                    <td class="text-end align-middle">
 
                     <td class="text-end align-middle">
-                    <div class="d-flex justify-content-start">
+                    <div class="d-flex justify-content-end">
                         <form method="post" action="itemlist">
                             <button name="dimensions" value="${order.width}:${order.length}:${order.orderId}" type="submit" class="ms-2 btn btn-info btm-sm">Se Styklisten</button>
                         </form>
                         <form method="post" action="removeadminorder">
                             <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${order.orderId}">Fjern</button>
-                            <button type="submit"
-                                    class="ms-2 btn btn-info btm-sm" name="id"
-                                    value="${order.orderId}">Fjern
-                            </button>
 
                         </form>
 
                     </div>
                 </td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
