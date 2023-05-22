@@ -36,14 +36,13 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
-                            <p> Glemt password? Klik <a href="forgottenpassword.jsp">her</a></p>
+                            <p> Glemt password? Klik <a href="https://www.johannesfog.dk/om-fog/forretninger/kontakt" target="_blank">her</a></p>
                             <button type="submit" class="btn btn-info">Login</button>
                         </form><br/>
                         <p>Er du ikke oprettet hos Fog, så fortsæt venligst her for at oprette dig som <a href="register.jsp">ny kunde</a></p>
                     </div>
                 </div>
             </div>
-
 
            <%-- <div style="position:relative; right:200px; top:2px;" class="h-48 p-5 bg-light border rounded-3 mt-2">
            <h5>Log venligst ind for at kunne bestille samt<br> se din nuværende ordre hos Fog. </h5>--%>
