@@ -69,7 +69,7 @@
 
 
             <div class="text-end">
-            <button type="submit" class="btn btn-primary mt-1">Tilføj</button>
+            <button type="submit" class="btn btn-info mt-1">Tilføj</button>
             </div>
         </div>
         </form>

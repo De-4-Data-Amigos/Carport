@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Product;
+import dat.backend.model.entities.ProductAndProductVariant;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
@@ -28,7 +29,7 @@ public class AdminProductList extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
-                List<Product> products = null;
+                List<ProductAndProductVariant> products = null;
                 try {
                     products = ProductFacade.getAllProducts(connectionPool);
 
@@ -36,7 +37,7 @@ public class AdminProductList extends HttpServlet {
                     request.setAttribute("errormessage", e.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
-                request.setAttribute("productList", products);
+                request.setAttribute("adminProductList", products);
                 request.getRequestDispatcher("WEB-INF/admin-productlist.jsp").forward(request, response);
 
             }
@@ -60,8 +61,8 @@ public class AdminProductList extends HttpServlet {
         }
 
         try {
-            List<Product> productList = ProductFacade.getAllProducts(connectionPool);
-            request.setAttribute("productList", productList); // Gem produktlisten i request
+            List<ProductAndProductVariant> productList = ProductFacade.getAllProducts(connectionPool);
+            request.setAttribute("adminProductList", productList); // Gem produktlisten i request
             request.getRequestDispatcher("admin-productlist.jsp").forward(request, response);
 
         } catch (DatabaseException e) {

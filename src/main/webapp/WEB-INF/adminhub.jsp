@@ -36,6 +36,7 @@
             <div class="col-md-auto">
                 <a href="${pageContext.request.contextPath}/adminAddProduct" class="h3"><b>Tilføj Produkt</b></a><br/>
             </div>
+
         </div>
         <div class="container py-4">
 
