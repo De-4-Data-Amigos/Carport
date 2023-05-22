@@ -55,7 +55,7 @@
                     <td class="text-end align-middle">
                     <div class="d-flex justify-content-start">
                         <form method="post" action="itemlist">
-                            <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Se Styklisten</button>
+                            <button name="dimensions" value="${order.width}:${order.length}:${order.orderId}" type="submit" class="ms-2 btn btn-info btm-sm">Se Styklisten</button>
                         </form>
                         <form method="post" action="removeadminorder">
                             <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${order.orderId}">Fjern</button>
