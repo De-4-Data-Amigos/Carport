@@ -27,6 +27,7 @@ public class ItemListServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if(action.equalsIgnoreCase("download")){
             String csv = CsvHelper.convertItemListToCSV(itemList);
@@ -34,9 +35,10 @@ public class ItemListServlet extends HttpServlet {
         }
     }
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String[] split = request.getSession().getAttribute("dimensions").toString().split(":");
         String widthString = split[0];
         String lengthString = split[1];

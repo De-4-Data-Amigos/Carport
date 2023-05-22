@@ -28,7 +28,7 @@ public class RemoveChosenOrder extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         request.getSession().setAttribute("order", null);
 
         request.getRequestDispatcher("WEB-INF/carportbuilder.jsp").forward(request, response);
