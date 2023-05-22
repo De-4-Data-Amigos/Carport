@@ -52,14 +52,17 @@
                     <td class="text-end align-middle">${order.width}</td>
                     <td class="text-end align-middle">
 
-                        <form method="post" action="removeadminorder">
-                            <button type="submit"
-                                    class="ms-2 btn btn-primary btm-sm" name="id"
-                                    value="${order.orderId}">Fjern
-                            </button>
+                    <td class="text-end align-middle">
+                    <div class="d-flex justify-content-start">
+                        <form method="post" action="itemlist">
+                            <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Se Styklisten</button>
                         </form>
-                    </td>
-                </tr>
+                        <form method="post" action="removeadminorder">
+                            <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${order.orderId}">Fjern</button>
+                        </form>
+
+                    </div>
+                </td>
             </c:forEach>
             </tbody>
         </table>

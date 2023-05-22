@@ -20,7 +20,7 @@ public class CarportBuilderLogin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         request.getRequestDispatcher("/WEB-INF/carportbuilder.jsp").forward(request, response);
 // Her redirecter vi til carportbuilder, og grunden til servletten findes er fordi den ligger i WEB-INF, så vi er nødt til at bruge en servlet, for at komme derover.
 

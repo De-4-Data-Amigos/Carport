@@ -27,6 +27,7 @@ public class Login extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+        request.setCharacterEncoding("UTF-8");
         // You shouldn't end up here with a GET-request, thus you get sent back to frontpage
         request.getRequestDispatcher("login.jsp").forward(request, response);
 
@@ -34,6 +35,7 @@ public class Login extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // invalidating user object in session scope

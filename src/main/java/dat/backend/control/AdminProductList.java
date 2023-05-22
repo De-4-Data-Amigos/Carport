@@ -26,6 +26,7 @@ public class AdminProductList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
@@ -52,7 +53,7 @@ public class AdminProductList extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         User _user = (User) request.getSession().getAttribute("user");
         if (!_user.getRole().equalsIgnoreCase("admin")) {
             request.setAttribute("besked", "Du er ikke en admin");

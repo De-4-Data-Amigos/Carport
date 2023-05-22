@@ -13,6 +13,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 
+
 @WebServlet(name = "AdminAddProduct", value = "/adminAddProduct")
 public class AdminAddProduct extends HttpServlet {
 
@@ -26,6 +27,7 @@ public class AdminAddProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String unitString = request.getParameter("unit");
@@ -53,6 +55,7 @@ public class AdminAddProduct extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
@@ -64,6 +67,7 @@ public class AdminAddProduct extends HttpServlet {
 
         request.setAttribute("errormessage", "Du er ikke en admin");
         request.getRequestDispatcher("error.jsp").forward(request, response);
+
 
     }
 
