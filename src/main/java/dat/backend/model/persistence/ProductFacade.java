@@ -4,8 +4,6 @@ import dat.backend.model.entities.Product;
 import dat.backend.model.entities.ProductAndProductVariant;
 import dat.backend.model.entities.ProductType;
 import dat.backend.model.entities.Unit;
-import dat.backend.model.entities.ProductType;
-import dat.backend.model.entities.Unit;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.util.List;

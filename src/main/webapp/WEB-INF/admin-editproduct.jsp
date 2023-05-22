@@ -18,7 +18,7 @@
     <jsp:body>
 
         <div class="container">
-            <h1>Tilføj Produkt</h1>
+            <h1>Admin Edit Product</h1>
             <div class="row justify-content-end">
                 <div class="col-md-6">
                     <form>

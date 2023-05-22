@@ -45,7 +45,7 @@ public class ProductMapper {
     }
 
     static ProductAndProductVariant getProduct(int id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id WHERE p.id = ?;";
+        String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id WHERE pv.id = ?;";
 
         ProductAndProductVariant product = null;
 
