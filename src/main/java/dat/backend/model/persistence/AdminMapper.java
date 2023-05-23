@@ -37,7 +37,7 @@ public class AdminMapper {
         return userList;
     }
 
-    static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
+   public static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "SELECT * FROM orders;";
 

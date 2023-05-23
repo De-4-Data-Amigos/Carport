@@ -28,12 +28,12 @@ class OrderMapperTest {
         connectionPool = new ConnectionPool(USER, PASSWORD, URL);
 
         try (Connection testConnection = connectionPool.getConnection()) {
-            try (Statement stmt = testConnection.createStatement()) {
+            try (Statement statement = testConnection.createStatement()) {
                 // Create test database - if not exist
-                stmt.execute("CREATE DATABASE  IF NOT EXISTS carport_test;");
+                statement.execute("CREATE DATABASE  IF NOT EXISTS carport_test;");
 
                 // TODO: Create user table. Add your own tables here
-                stmt.execute("CREATE TABLE IF NOT EXISTS carport_test.orders LIKE carport.orders;");
+                statement.execute("CREATE TABLE IF NOT EXISTS carport_test.orders LIKE carport.orders;");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -44,16 +44,16 @@ class OrderMapperTest {
     @BeforeEach
     void setUp() {
         try (Connection testConnection = connectionPool.getConnection()) {
-            try (Statement stmt = testConnection.createStatement()) {
+            try (Statement statement = testConnection.createStatement()) {
                 // TODO: Remove all rows from all tables - add your own tables here
-                stmt.execute("delete from itemlist");
-                stmt.execute("delete from orders");
-                stmt.execute("delete from user");
+                statement.execute("delete from itemlist");
+                statement.execute("delete from orders");
+                statement.execute("delete from user");
 
                 // TODO: Insert a few users - insert rows into your own tables here
-                stmt.execute("insert into user (email, password, firstname, lastname, phonenumber) " +
+                statement.execute("insert into user (email, password, firstname, lastname, phonenumber) " +
                         "values ('user@mail.com','" + RegisterHelper.hashPassword("1234") + "','user', 'vic','245534'),('admin@mail.com','" + RegisterHelper.hashPassword("1234") + " ','admin','den', '744554'), ('ben@mail.com',' " + RegisterHelper.hashPassword("1234") + " ','user', 'ras', '647476')");
-                user = UserFacade.login("user@mail.com","1234", connectionPool);
+                user = UserFacade.login("user@mail.com", "1234", connectionPool);
             }
 
         } catch (SQLException throwables) {
@@ -68,18 +68,21 @@ class OrderMapperTest {
 
     @Test
     void createOrder() throws DatabaseException {
-        Orders newOrder = new Orders(369,400, user,  connectionPool);
-        Orders expectedOrder =OrderFacade.getOrderById (newOrder.getId(), connectionPool);
+        Orders newOrder = new Orders(380, 400, user, connectionPool);
+        Orders expectedOrder = OrderFacade.getOrderById(newOrder.getId(), connectionPool);
         assertEquals(expectedOrder, newOrder);
+        Orders newOrder2 = new Orders(500, 400, user, connectionPool);
+        Orders expectedOrder2 = OrderFacade.getOrderById(newOrder2.getId(), connectionPool);
+        assertEquals(expectedOrder2, newOrder2);
 
     }
 
     @Test
     void setPrice() throws DatabaseException {
         float newPrice = 11000;
-        Orders newOrder = new Orders(400,400, user,  connectionPool);
-        newOrder.setDbPrice(newPrice,connectionPool);
-        Orders order = OrderFacade.getOrderById(newOrder.getId(),connectionPool);
+        Orders newOrder = new Orders(400, 400, user, connectionPool);
+        newOrder.setDbPrice(newPrice, connectionPool);
+        Orders order = OrderFacade.getOrderById(newOrder.getId(), connectionPool);
 
         assertEquals(newPrice, newOrder.getPrice());
         assertEquals(newPrice, order.getPrice());

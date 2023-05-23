@@ -24,12 +24,12 @@ public class CarportBuilderHelperTest {
         connectionPool = new ConnectionPool(USER, PASSWORD, URL);
 
         try (Connection testConnection = connectionPool.getConnection()) {
-            try (Statement stmt = testConnection.createStatement()) {
+            try (Statement statement = testConnection.createStatement()) {
                 // Create test database - if not exist
-                stmt.execute("CREATE DATABASE  IF NOT EXISTS carport_test;");
+                statement.execute("CREATE DATABASE  IF NOT EXISTS carport_test;");
 
                 // TODO: Create user table. Add your own tables here
-                stmt.execute("CREATE TABLE IF NOT EXISTS carport_test.user LIKE carport.user;");
+                statement.execute("CREATE TABLE IF NOT EXISTS carport_test.user LIKE carport.user;");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -40,14 +40,14 @@ public class CarportBuilderHelperTest {
     @BeforeEach
     public void setUp() {
         try (Connection testConnection = connectionPool.getConnection()) {
-            try (Statement stmt = testConnection.createStatement()) {
+            try (Statement statement = testConnection.createStatement()) {
                 // TODO: Remove all rows from all tables - add your own tables here
-                stmt.execute("delete from itemlist");
-                stmt.execute("delete from orders");
-                stmt.execute("delete from user");
+                statement.execute("delete from itemlist");
+                statement.execute("delete from orders");
+                statement.execute("delete from user");
 
                 // TODO: Insert a few users - insert rows into your own tables here
-                stmt.execute("insert into user (email, password, firstname, lastname, phonenumber) " +
+                statement.execute("insert into user (email, password, firstname, lastname, phonenumber) " +
                         "values ('user@mail.com','"+ RegisterHelper.hashPassword("1234") + "','user', 'vic','245534'),('admin@mail.com','"+ RegisterHelper.hashPassword("1234") + " ','admin','den', '744554'), ('ben@mail.com',' "+ RegisterHelper.hashPassword("1234") + " ','user', 'ras', '647476')");
             }
         } catch (SQLException throwables) {
