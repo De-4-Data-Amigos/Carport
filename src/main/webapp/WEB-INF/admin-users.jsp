@@ -17,17 +17,9 @@
 
     <jsp:body>
 
-        <div class="container">
-            <h1>Admin Users</h1>
-            <div class="row justify-content-end">
-                <div class="col-md-6">
-                    <form>
-                        <div class="text-end mt-4">
-                            <input type="button" value="Tilbage" onclick="history.back()">
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <h1>Brugere</h1>
+        <div class="text-end mt-4">
+            <a href="adminhub" class="btn btn-primary">Tilbage</a>
         </div>
 
 

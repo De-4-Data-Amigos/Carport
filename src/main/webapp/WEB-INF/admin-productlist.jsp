@@ -18,17 +18,17 @@
     <jsp:body>
 
         <div class="container">
-            <h1>Admin Produkter</h1>
-            <div class="row justify-content-end">
-                <div class="col-md-6">
-                    <form>
-                        <div class="text-end mt-4">
-                            <input type="button" value="Tilbage" onclick="history.back()">
-                        </div>
-                    </form>
+            <h1>Produkter</h1>
+            <div class="d-flex justify-content-between mt-4">
+                <div>
+                    <a href="adminAddProduct" class="btn btn-primary">Tilføj produkt</a>
+                </div>
+                <div>
+                    <a href="adminhub" class="btn btn-primary">Tilbage</a>
                 </div>
             </div>
         </div>
+
 
 
         <table class="table table-striped mt-4">
@@ -61,10 +61,14 @@
                     <td class="text-end align-middle">
                         <div class="d-flex justify-content-start">
                             <form method="get" action="editadminproduct">
-                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Opdater</button>
+                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id"
+                                        value="${product.productVariantId}">Opdater
+                                </button>
                             </form>
                             <form method="post" action="removeadminproductlist">
-                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Fjern</button>
+                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id"
+                                        value="${product.productVariantId}">Fjern
+                                </button>
                             </form>
 
                         </div>

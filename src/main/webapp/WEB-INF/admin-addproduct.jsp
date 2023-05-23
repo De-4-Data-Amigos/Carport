@@ -19,13 +19,9 @@
     <jsp:body>
 
         <div class="container">
-        <h1>Tilføj Produkt</h1>
-
-
-
-        <form method="post" action="adminAddProduct">
+            <h1>Tilføj produkt</h1>
             <div class="text-end mt-4">
-                <input type="button" value="Tilbage" onclick="history.back()">
+                <a href="adminhub" class="btn btn-primary">Tilbage</a>
             </div>
 
         <div class="h-48 p-5 bg-light border rounded-3 mt-2">
