@@ -28,8 +28,8 @@
         <div style="display: flex; justify-content: center;">
             <div><form method="get" action="carportbuilder">
 
-                <select class="form-select" style="color: #6f42c1; width: 600px; text-align-last: center;" aria-label="Default select example" name="width">
-                    <option selected>Carport bredde</option>
+                <select class="form-select" style="color: #6f42c1; width: 600px; text-align-last: center;" aria-label="Default select example" name="width" required>
+                    <option value="" disabled selected>Carport bredde</option>
                     <option value="240"> 240 cm </option>
                     <option value="270"> 270 cm </option>
                     <option value="300"> 300 cm </option>
@@ -47,8 +47,8 @@
                 </select>
 
 
-                <select class="form-select" style="color: #6f42c1; width: 600px; text-align-last: center;" aria-label="Default select example" name="length">
-                    <option selected>Carport længde</option>
+                <select class="form-select" style="color: #6f42c1; width: 600px; text-align-last: center;" aria-label="Default select example" name="length" required>
+                    <option value="" disabled selected>Carport længde</option>
                     <option value="240"> 240 cm </option>
                     <option value="270"> 270 cm </option>
                     <option value="300"> 300 cm </option>
