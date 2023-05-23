@@ -46,25 +46,28 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="product" items="${requestScope.productList}">
+            <c:forEach var="product" items="${requestScope.adminProductList}">
                 <tr>
                     <td class="text-start align-middle"> ${product.name}</td>
                     <td class="text-center align-middle">${product.description}</td>
                     <td class="text-center align-middle">${product.unit}</td>
                     <td class="text-center align-middle">${product.pricePrUnit}</td>
                     <td class="text-center align-middle">${product.type}</td>
-                    <td class="text-center align-middle">${product.id}</td>
+                    <td class="text-center align-middle">${product.productVariantId}</td>
                     <td class="text-center align-middle">${product.productId}</td>
                     <td class="text-center align-middle">${product.length}</td>
                     <td class="text-end align-middle">${product.width}</td>
 
                     <td class="text-end align-middle">
-                        <form method="post" action="removeadminproductlist">
-                            <button type="submit"
-                                    class="ms-2 btn btn-info btm-sm" name="id"
-                                    value="${product.id}">Fjern
-                            </button>
-                        </form>
+                        <div class="d-flex justify-content-start">
+                            <form method="get" action="editadminproduct">
+                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Opdater</button>
+                            </form>
+                            <form method="post" action="removeadminproductlist">
+                                <button type="submit" class="ms-2 btn btn-info btm-sm" name="id" value="${product.productVariantId}">Fjern</button>
+                            </form>
+
+                        </div>
                     </td>
                 </tr>
             </c:forEach>

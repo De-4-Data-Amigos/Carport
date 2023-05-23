@@ -26,13 +26,14 @@ public class CarportBuilder extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         request.getRequestDispatcher("checkout").forward(request,response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String forward = request.getParameter("dimensions");
         request.getSession().setAttribute("dimensions", forward);
 

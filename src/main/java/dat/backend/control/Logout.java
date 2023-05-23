@@ -14,6 +14,7 @@ public class Logout extends HttpServlet
 {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.invalidate();
