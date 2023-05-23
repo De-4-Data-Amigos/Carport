@@ -40,21 +40,34 @@ public class ItemListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String[] split = ((String)request.getParameter("dimensions")).split(":");
+
+        HttpSession session = request.getSession();
+        String dimensions = (String)session.getAttribute("dimensions");
+        Orders order = (Orders)session.getAttribute("order");
+        if(dimensions == null){
+            dimensions = ((String)request.getParameter("dimensions"));
+        }
+
+        String[] split = dimensions.split(":");
         String widthString = split[0];
         String lengthString = split[1];
-        String orderIDString = split[2];
+        String orderIDString = "";
+        int orderID = -1;
+        if(split.length > 2){
+            orderIDString = split[2];
+            orderID = Integer.parseInt(orderIDString);
+        }
 
         int width = Integer.parseInt(widthString);
         int length = Integer.parseInt(lengthString);
-        int orderID = Integer.parseInt(orderIDString);
 
-        HttpSession session = request.getSession();
 
 
         itemList = null;
         try {
-            Orders order = OrderFacade.getOrderById(orderID, connectionPool);
+            if(order == null){
+                order = OrderFacade.getOrderById(orderID, connectionPool);
+            }
             itemList = CarportBuilderHelper.generateItemList(width, length, order);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
