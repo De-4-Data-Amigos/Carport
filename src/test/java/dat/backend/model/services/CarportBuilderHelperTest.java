@@ -56,12 +56,7 @@ public class CarportBuilderHelperTest {
         }
 
     }
-
-
-   @Test
-    public void testGenerateItemList() {
-
-    }
+    
 
     @Test
     public void testGetPostAmount() {
