@@ -66,8 +66,25 @@ public class AdminMapperTest {
     void getAllOrders() throws DatabaseException {
 
         try {
-            orderViewList = AdminFacade.getAllOrders(connectionPool);
-            int expectedAmount =
+            orderList = AdminFacade.getAllOrders(connectionPool);
+            int expectedAmount = 5; // vil fejle, der er 1 order i db
+            assertEquals(expectedAmount, orderList.size());
+
+        } catch (DatabaseException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+     }
+
+     @Test
+    void getAllOrderViews() throws DatabaseException {
+
+        try {
+            orderViewList = AdminFacade.getAllOrdersAndUserInfo(connectionPool);
+            int expectedAmount = 10; // vil fejle, der er 1 orderView i db
+            assertEquals(expectedAmount, orderViewList.size());
+
+        } catch (DatabaseException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
         }
      }
 }
