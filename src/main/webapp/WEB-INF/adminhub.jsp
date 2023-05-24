@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-md-auto">
-                <a href="${pageContext.request.contextPath}/admin-orders" class="h3"><b>Order</b></a><br/>
+                <a href="${pageContext.request.contextPath}/admin-orders" class="h3"><b>Ordre</b></a><br/>
             </div>
 
             <div class="col-md-auto">

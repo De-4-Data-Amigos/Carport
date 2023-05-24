@@ -11,14 +11,14 @@
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Admin Edit Product
+            Edit Product
     </jsp:attribute>
 
 
     <jsp:body>
 
         <div class="container">
-            <h1>Admin Edit Product</h1>
+            <h1>Edit Product</h1>
             <div class="row justify-content-end">
                 <div class="col-md-6">
                     <form>
