@@ -95,4 +95,5 @@ class UserMapperTest {
         assertEquals(expectedUser, logInUser);
 
     }
+
 }
