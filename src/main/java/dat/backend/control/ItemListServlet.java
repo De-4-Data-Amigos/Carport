@@ -14,6 +14,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ItemListServlet", value = "/itemlist")
@@ -40,7 +41,7 @@ public class ItemListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-
+        itemList = new ArrayList<>();
         HttpSession session = request.getSession();
         String dimensions = (String)session.getAttribute("dimensions");
         Orders order = (Orders)session.getAttribute("order");
