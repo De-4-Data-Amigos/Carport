@@ -14,27 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "login", urlPatterns = {"/login"} )
-public class Login extends HttpServlet
-{
+@WebServlet(name = "login", urlPatterns = {"/login"})
+public class Login extends HttpServlet {
     private ConnectionPool connectionPool;
 
     @Override
-    public void init() throws ServletException
-    {
+    public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         // You shouldn't end up here with a GET-request, thus you get sent back to frontpage
         request.getRequestDispatcher("login.jsp").forward(request, response);
 
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         HttpSession session = request.getSession();
@@ -42,15 +38,19 @@ public class Login extends HttpServlet
         String username = request.getParameter("Email");
         String password = request.getParameter("password");
 
-        try
-        {
+        try {
             User user = UserFacade.login(username, password, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
+
+            if (user.getRole().equalsIgnoreCase("admin")) {
+                request.getRequestDispatcher("WEB-INF/adminhub.jsp").forward(request, response);
+                return;
+            }
             request.getRequestDispatcher("WEB-INF/carportbuilder.jsp").forward(request, response);
-        }
-        catch (DatabaseException e)
-        {
+
+
+        } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
