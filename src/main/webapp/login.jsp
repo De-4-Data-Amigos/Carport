@@ -37,7 +37,7 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <p> Glemt password? Klik <a href="https://www.johannesfog.dk/om-fog/forretninger/kontakt" target="_blank">her</a></p>
-                            <button type="submit" class="btn btn-info">Login</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
                         </form><br/>
                         <p>Er du ikke oprettet hos Fog, så fortsæt venligst her for at oprette dig som <a href="register.jsp">ny kunde</a></p>
                     </div>

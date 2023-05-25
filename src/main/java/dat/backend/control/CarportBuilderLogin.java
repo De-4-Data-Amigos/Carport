@@ -23,6 +23,7 @@ public class CarportBuilderLogin extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         request.getRequestDispatcher("/WEB-INF/carportbuilder.jsp").forward(request, response);
 // Her redirecter vi til carportbuilder, og grunden til servletten findes er fordi den ligger i WEB-INF, så vi er nødt til at bruge en servlet, for at komme derover.
+        //Vi kan ikke bare bruge CarportBuilder til at redirect med da den klasses get metode tager os videre til checkout, så den her klasse er bare et mellemled.
 
     }
 

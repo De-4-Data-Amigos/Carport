@@ -52,7 +52,7 @@
                                     <label for="inputPassword" class="form-label"></label>
                                     <input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelpBlock">
                                     <div id="passwordHelpBlock" class="form-text">Afslut derefter med 'Bekræft' knappen for at komme til din personlige stykliste<br> samt stl-fil, såfremt du ønsker en 3D version af din carport.</div><br>
-                                    <button type="submit" class="btn btn-info">Bekræft</button>
+                                    <button type="submit" class="btn btn-primary">Bekræft</button>
                                 </div>
                             </form>
 

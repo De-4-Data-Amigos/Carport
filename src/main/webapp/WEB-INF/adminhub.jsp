@@ -47,21 +47,22 @@
                         <div class="text-center fw-bold">
                             På Admin Hub kan du håndtere brugerkonti, ordrer og produktlisten. Ved at klikke på de
                             forskellige
-                            menuer herunder vil du kunne tilgå dem og se de forskellige ting i databasen.
+                            menuer herunder, vil du kunne tilgå dem og se de forskellige ting i databasen.
                             <br>
                         </div>
                         <br>
                         Hvis du vil administrere ordrer og salg, kan du klikke på "Admin orders". Her kan du se
-                        en oversigt over eksisterende ordrer, ændre status for ordrer og håndtere eventuelle
+                        en oversigt over eksisterende ordrer, ændre pris for ordrer og håndtere eventuelle
                         problemer eller spørgsmål fra kunder.<br>
                         <br>
                         Hvis du har brug for at opdatere eller tilføje nye produkter til systemet, kan du klikke
-                        på "Item list". Dette giver dig mulighed for at se en liste over tilgængelige produkter
+                        på "Produktliste". Dette giver dig mulighed for at se en liste over tilgængelige produkter
                         og redigere deres egenskaber, såsom pris eller beskrivelse.<br>
                         <br>
                         Admin Hub gør det nemt for dig at udføre administrative opgaver uden at skulle have
-                        tekniske færdigheder eller kendskab til programmering. Klik blot på de relevante links
+                        tekniske færdigheder eller kendskab til programmet. Klik blot på de relevante links
                         for at få adgang til de ønskede funktioner og forenkle din daglige arbejdsgang.<br>
+
                         </p>
                     </div>
                 </div>

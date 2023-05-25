@@ -72,7 +72,7 @@
 
                 <div class="container d-flex justify-content-center align-items-center vh-50">
                     <div class="btn-group" role="group">
-                        <button type="submit" class="btn btn-info">Bestil tilbud</button>
+                        <button type="submit" class="btn btn-primary">Bestil tilbud</button>
                     </div>
                 </div>
 

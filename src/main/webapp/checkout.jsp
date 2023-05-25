@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <form method="post" action="carportbuilder" class="text-center mt-3">
-                        <button type="submit" class="btn btn-info" name="dimensions" value="${requestScope.width}:${requestScope.length}">Bekræft bestilling</button>
+                        <button type="submit" class="btn btn-primary" name="dimensions" value="${requestScope.width}:${requestScope.length}">Bekræft bestilling</button>
                     </form>
                 </div>
 
