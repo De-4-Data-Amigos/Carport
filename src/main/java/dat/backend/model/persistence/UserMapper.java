@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class UserMapper {
-    static User login(String email, String password, ConnectionPool connectionPool) throws DatabaseException {
+    protected static User login(String email, String password, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 
         User user = null;
@@ -39,7 +39,7 @@ class UserMapper {
         return user;
     }
 
-    static User createUser(String email, String password, String firstname, String lastname, int phonenumber, ConnectionPool connectionPool) throws DatabaseException {
+    protected static User createUser(String email, String password, String firstname, String lastname, int phonenumber, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
         String sql = "insert into user (email, password, firstname, lastname, phonenumber) values (?,?,?,?,?)";

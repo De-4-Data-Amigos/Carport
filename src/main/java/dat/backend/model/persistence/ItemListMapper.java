@@ -10,7 +10,7 @@ import java.util.List;
 public class ItemListMapper {
 
 
-    static void addItemList(ItemEntry itemEntry, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void addItemList(ItemEntry itemEntry, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "INSERT INTO itemlist (order_id, product_variant_id) values (?,?);";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -30,7 +30,7 @@ public class ItemListMapper {
 
     }
 
-    static void addItemList(int orderId, int productVariantId, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void addItemList(int orderId, int productVariantId, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "INSERT INTO itemlist (order_id, product_variant_id) values (?,?);";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -49,7 +49,7 @@ public class ItemListMapper {
 
     }
 
-    static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
+    protected static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT il.id, order_id, product_variant_id, product_id, height, width, length, product.name, description, price_pr_unit, unit, type, count(*) as amount FROM itemlist as il INNER JOIN product_variant as pvar on il.product_variant_id = pvar.id INNER JOIN product as product on pvar.product_id = product.id where order_id = ? group by product_variant_id;";
         List<CompleteProduct> completeProducts = new ArrayList<>();
 
@@ -76,7 +76,7 @@ public class ItemListMapper {
     }
 
 
-    static void removeItemListOrderId(int id, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void removeItemListOrderId(int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "DELETE FROM carport.itemlist WHERE order_id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {

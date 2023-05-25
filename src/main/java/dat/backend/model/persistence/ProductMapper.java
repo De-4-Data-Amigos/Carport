@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductMapper {
-    static List<ProductAndProductVariant> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
+    protected static List<ProductAndProductVariant> getAllProducts(ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id;";
 
         List<ProductAndProductVariant> productList = new ArrayList<>();
@@ -44,7 +44,7 @@ public class ProductMapper {
         return productList;
     }
 
-    static ProductAndProductVariant getProduct(int id, ConnectionPool connectionPool) throws DatabaseException {
+    protected static ProductAndProductVariant getProduct(int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT * FROM product as p INNER JOIN product_variant as pv on pv.product_id = p.id WHERE pv.id = ?;";
 
         ProductAndProductVariant product = null;
@@ -80,7 +80,7 @@ public class ProductMapper {
         return product;
     }
 
-    static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "DELETE FROM product WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -93,7 +93,7 @@ public class ProductMapper {
         }
     }
 
-    static void removeProductVariant(int id, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void removeProductVariant(int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "DELETE FROM product_variant WHERE product_id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -108,7 +108,7 @@ public class ProductMapper {
 
 
 
-    public static void editProduct(String name, int id, String description, Unit unit, float pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void editProduct(String name, int id, String description, Unit unit, float pricePerUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "UPDATE product SET name = ?, description = ?, unit = ?, price_pr_unit = ?, type = ? WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -127,7 +127,7 @@ public class ProductMapper {
         }
     }
 
-    public static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "UPDATE product_variant set height = ?, width = ?, length = ? WHERE product_id = ? AND id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
@@ -146,7 +146,7 @@ public class ProductMapper {
     }
 
 
-    public static int addProduct(String name, String description, Unit unit, float pricePrUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
+    protected static int addProduct(String name, String description, Unit unit, float pricePrUnit, ProductType type, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "INSERT INTO product (name, description, unit, price_pr_unit, type) VALUES (?, ?, ?, ?, ?);";
         int productId = 0;
         try (Connection connection = connectionPool.getConnection()) {
@@ -172,7 +172,7 @@ public class ProductMapper {
     }
 
 
-    public static int addProductVariant(int productId, float length, float width, float height, ConnectionPool connectionPool) throws DatabaseException {
+    protected static int addProductVariant(int productId, float length, float width, float height, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "INSERT INTO product_variant(product_id, length, width, height) VALUES (?, ?, ?, ?);";
         int productVariantId = 0;
         try (Connection connection = connectionPool.getConnection()) {

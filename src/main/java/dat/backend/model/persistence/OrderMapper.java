@@ -10,7 +10,7 @@ import java.util.List;
 public class OrderMapper {
 
 
-    static int createOrder(Orders order, ConnectionPool connectionPool) throws DatabaseException {
+    protected static int createOrder(Orders order, ConnectionPool connectionPool) throws DatabaseException {
        String sql = "INSERT INTO orders (user_id, price, length, width) values (?,?,?,?);";
         int orderId = 0;
         try (Connection connection = connectionPool.getConnection()) {
@@ -35,7 +35,7 @@ public class OrderMapper {
     }
 
 
-    static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
+    protected static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "select * from orders;";
 
@@ -64,7 +64,7 @@ public class OrderMapper {
     }
 
 
-    static void removeOrderById(int id, ConnectionPool connectionPool) throws DatabaseException {
+    protected static void removeOrderById(int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "DELETE FROM orders WHERE id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
