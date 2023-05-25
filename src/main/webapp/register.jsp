@@ -15,7 +15,7 @@
 
     <jsp:body>
 
-        <h3>You can register here</h3>
+        <h3>Du kan registrere dig her</h3>
 
         <c:if test="${requestScope.message != null}">
             <p>${requestScope.message}</p>

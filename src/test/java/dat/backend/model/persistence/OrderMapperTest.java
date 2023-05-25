@@ -88,4 +88,14 @@ class OrderMapperTest {
         assertEquals(newPrice, order.getPrice());
 
     }
+
+    @Test
+    void deleteOrder() throws DatabaseException{
+
+        Orders newOrder = new Orders(380, 400, user, connectionPool); // Laver ny order med objektet newOrder
+        OrderFacade.removeOrderById(newOrder.getId(),connectionPool); // Fjerner newOrder på id'et
+        Orders orderCheck = OrderFacade.getOrderById(newOrder.getId(),connectionPool); // Tjekker om orderen er der via Id, og gemmer det tjek som orderCheck
+        assertEquals(null, orderCheck); // Forventer "null" da den burde være fjernet i orderCheck.
+
+    }
 }
