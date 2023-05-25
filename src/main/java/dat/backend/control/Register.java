@@ -56,7 +56,7 @@ public class Register extends HttpServlet {
 
 
             // request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
-            response.sendRedirect("carportbuilderlogin");
+            request.getRequestDispatcher("WEB-INF/carportbuilder.jsp").forward(request, response);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
