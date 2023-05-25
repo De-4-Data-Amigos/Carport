@@ -62,16 +62,16 @@
                     <div class="h-48 p-5 bg-light border rounded-3">
                         <h5>Har du brug for hjælp?</h5><br>
                         <div class="col">
-                            <p><img src="images/mail.png" width="35px;" class="img-fluid align-left"/><em>   Kontakt@Fog.dk</em></p>
-                            <p><img src="images/tlf.png" width="35px;" class="img-fluid align-left"/><em>  +45 40404040</em></p>
+                            <p><img src="images/mail.png" width="35px;" class="img-fluid align-left"/><em> Kontakt@Fog.dk</em></p>
+                            <p><img src="images/tlf.png" width="35px;" class="img-fluid align-left"/><em> +45 40404040</em></p>
                             <p><em>Bemærk at der <b>altid</b> er gratis fragt hos Fog!</em></p>
                         </div>
                     </div>
-                    <form method="post" action="carportbuilder">
-                        <button type="submit" class="btn btn-info margin-top" name="dimensions" value="${requestScope.width}:${requestScope.length}">Bekræft bestilling</button>
+                    <form method="post" action="carportbuilder" class="text-center mt-3">
+                        <button type="submit" class="btn btn-info" name="dimensions" value="${requestScope.width}:${requestScope.length}">Bekræft bestilling</button>
                     </form>
-
                 </div>
+
             </div>
 
             <footer class="pt-3 mt-4 text-muted border-top">
