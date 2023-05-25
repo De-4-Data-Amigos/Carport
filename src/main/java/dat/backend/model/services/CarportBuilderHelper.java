@@ -14,10 +14,23 @@ import dat.backend.model.persistence.ItemListMapper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Det CarportBuilderHelper klasse er med til beregne vores stykliste
+ */
+
 public class CarportBuilderHelper {
 
     private static float price = 0;
 
+    /**
+     * Genererer en liste over CompleteProduct-objekter baseret på dimensioner og ordreoplysninger.
+     *
+     * @param width  Bredde på produktet.
+     * @param length Længde på produktet.
+     * @param order  Ordreobjektet, der indeholder relevante oplysninger.
+     * @return En liste over CompleteProduct-objekter.
+     * @throws DatabaseException Hvis der opstår en databasefejl under processen.
+     */
 
     public static List<CompleteProduct> generateItemList(int width, int length, Orders order) throws DatabaseException {
         price = 0;
@@ -49,7 +62,15 @@ public class CarportBuilderHelper {
         }
         return completeProducts;
     }
-
+/**
+ * Beregner antallet af postelementer (stolper) og opretter en liste over dem baseret på produktets dimensioner (bredde og længde) og ordreoplysninger.
+ * Hvis både bredden og længden er over 5 meter og 4,80 meter, anvendes der 6 stolper. Ellers anvendes der 4 stolper.
+ * Metoden opretter en liste af ItemEntry-objekter, der repræsenterer postelementerne i ordren.
+ *  @param width Bredde på på stolpen
+ * @param length Længde på stolpen
+ * @param orderId er id´en den tilhørende ordre
+ * @return En liste over ItemEntry-objekter, der repræsenterer postelementerne.
+ * */
     //Stolpe: Alt over 5 x 4,80 m skal der bruges 6 stolper, alt under er det skal der bruges 4 stk.
     public static List<ItemEntry> getPostAmount(int width, int length, int orderId) {
         float pricePrUnit = 0.58f;
@@ -71,6 +92,15 @@ public class CarportBuilderHelper {
         }
         return itemEntryList;
     }
+
+    /**
+    *  Beregner antallet af remme og opretter en liste over dem baseret på længden og ordre-id'et.
+     * Hvis længden er over 6 meter, anvendes der 4 remme, ellers anvendes der 2 remme.
+     * Metoden opretter en liste af ItemEntry-objekter, der repræsenterer remmene i ordren.
+     * @param length Længde af remmen i cm
+     * @param orderId id´et for den pågældende ordre
+     * @return Den returende en liste over itemEntry objekter
+     */
 
     //Rem: Alt over 6 m længde skal der bruges 4 rem, alt under er det skal der bruges 2 stk.
     public static List<ItemEntry> getStrapAmount(int length, int orderId) {
@@ -94,8 +124,19 @@ public class CarportBuilderHelper {
         return itemEntryList;
     }
 
-    //Stern; foran og bagved. Alt under 360 cm skal der bruges 4 (2 stk foran 2 stk bagved), alt over er det skal der plusses med 1.
+    /**
+     * Beregner for og bag Stern og oprette en liste baseret på bredden og orderId
+     * Hver for- og bag stern en standardbredde på 360 cm
+     * Metoden justerer antallet af for- og bag stern baseret på den angivne bredde og opretter en liste af ItemEntry-objekter,
+     * der repræsenterer for- og bag stern i ordren.
+     * sternProductVariantId = 1 repræsenterer det id der er tilknyttet til stern i databaser
+     * @param width bredden for både for og bagved stern i cm
+     * @param orderId er id´et for den tilhørende ordre id
+     * @return Den returner en liste over for/bag stern som itemEntry objekter
+     *
+     * */
 
+    //Stern; foran og bagved. Alt under 360 cm skal der bruges 4 (2 stk foran 2 stk bagved), alt over er det skal der plusses med 1.
     public static List<ItemEntry> getSternFrontAndBackAmount(int width, int orderId) {
         float pricePrUnit = 0.37f;
         int amount = 2;
@@ -116,9 +157,15 @@ public class CarportBuilderHelper {
         return itemEntryList;
     }
 
+/**
+ * * Beregner antallet af side stern og opretter en liste over dem udefra på længden og ordre-id'et.
+ * Metoden justerer antallet af sidestammer baseret på længden ved at tage højde for, hvor mange hele sidestammer der kan skæres ud af længden.
+ * @param length Længde af side stern i cm (Standardlængden af hver sidestamme er 540 centimeter.)
+ * @param orderId er id´et for den tilhørende ordre id (en forbindelse mellem de genererede ItemEntry-objekter og den specifikke ordre, hvorpå sidestammerne skal tilføjes)
+ * @return en liste over side stern som itemEntry objekter
+ * */
 
     //Siderne sættes sammen (540cm), og antallet bregnes udefra dette. Vi ganger det med 2 og divider med max længde stern.
-
     public static List<ItemEntry> getSideSternAmount(int length, int orderId) {
         float pricePrUnit = 0.37f;
         int amount = 2;
@@ -138,6 +185,16 @@ public class CarportBuilderHelper {
 
         return itemEntryList;
     }
+
+    /**
+     * Beregner antallet af spær og opretter en liste over dem baseret på dimensionerne (bredde og længde) og ordreoplysninger.
+     * Metoden beregner antallet af spær ved at opdele længden i passende intervaller baseret på den givne bredde.
+     * Metoden opretter en liste af ItemEntry-objekter, der repræsenterer spærene i ordren.
+     * @param width    Bredde på spæret i cm
+     * @param length   Længde på spæret i cm
+     * @param orderId  Id'et for den tilhørende ordre.
+     * @return En liste over spær som ItemEntry-objekter.
+     */
 
     //Spær: 60 x 2 – længde af carporten og dividere med 0,59 så får vi det antal stk vi skal bruge.
 // Bredde <= 300 kan vi få to ud af det.
@@ -169,6 +226,15 @@ public class CarportBuilderHelper {
         return (float) Math.round((double) (length / (amount + 2)) * 10) / 10;
 
     }
+    /**
+     * Beregner antallet af tagplader og tilbehør og opretter en liste over dem baseret på dimensionerne (bredde og længde) og ordreoplysninger.
+     * Metoden tager højde for dimensionerne og beregner antallet af tagplader og skruer baseret på disse dimensioner.
+     * Metoden opretter en liste af ItemEntry-objekter, der repræsenterer tagplader og tilbehør i ordren.
+     * @param width    Bredde på taget i cm
+     * @param length   Længde på taget i cm
+     * @param orderId  Id'et for den tilhørende ordre.
+     * @return En liste over tagplader og tilbehør som ItemEntry-objekter.
+     */
 //tag
     public static List<ItemEntry> getRoofAmount(int width, int length, int orderId) {
 

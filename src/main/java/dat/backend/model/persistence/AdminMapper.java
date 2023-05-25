@@ -9,8 +9,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminMapper {
-    static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException {
+
+ class AdminMapper {
+
+   protected static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT * FROM user;";
 
         List<User> userList = new ArrayList<>();
@@ -37,7 +39,8 @@ public class AdminMapper {
         return userList;
     }
 
-   public static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
+
+    protected static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "SELECT * FROM orders;";
 
@@ -64,7 +67,7 @@ public class AdminMapper {
         return orderList;
     }
 
-    static List<OrderView> getAllOrdersAndUserInfo(ConnectionPool connectionPool) throws DatabaseException {
+    protected static List<OrderView> getAllOrdersAndUserInfo(ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "SELECT orders.*, user.email FROM orders INNER JOIN user ON orders.user_id = user.user_id;";
 

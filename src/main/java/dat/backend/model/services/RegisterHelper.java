@@ -6,6 +6,14 @@ import com.google.protobuf.Message;
 
 public class RegisterHelper {
 
+    /**
+     * Genererer en hash-værdi for den givne adgangskode ved hjælp af SHA-256 værdien
+     * Metoden anvender MessageDigest-klassen til at udføre hashing-operationen.
+     *
+     * @param password Adgangskoden, der skal hashes.
+     * @return En streng, der repræsenterer den hashede værdi af adgangskoden.
+     */
+
             public static String hashPassword(String password) {
                 try {
                     MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -22,8 +30,6 @@ public class RegisterHelper {
                 }
             }
 
-            // To use this class, simply call the
-            //hashPassword method with the password string as the input parameter:
 
             /*      String password = "myPassword123";
                     String hashedPassword = PasswordHasher.hashPassword(password);
