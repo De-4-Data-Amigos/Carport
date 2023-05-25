@@ -22,28 +22,31 @@ public class CarportBuilderHelper {
     public static List<CompleteProduct> generateItemList(int width, int length, Orders order) throws DatabaseException {
         price = 0;
         ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
-        List<ItemEntry> itemEntryList = new ArrayList<>();
-        List<ItemEntry> posts = getPostAmount(width, length, order.getId());
-        List<ItemEntry> straps = getStrapAmount(length, order.getId());
-        itemEntryList.addAll(getSternFrontAndBackAmount(width,order.getId()));
-        itemEntryList.addAll(getSideSternAmount(length,order.getId()));
-        List<ItemEntry> rafters = getRaftersAmount(width, length, order.getId());
-        itemEntryList.addAll(getRoofAmount(width, length, order.getId()));
-        itemEntryList.addAll(getScrewsAmount(order.getId()));
-        itemEntryList.addAll(getBracketAmount(rafters.size(),order.getId()));
-        itemEntryList.addAll(getBracketScrewsAmount(rafters.size(), order.getId()));
-        itemEntryList.addAll(getHollowtiesAmount(width, length, order.getId()));
-        itemEntryList.addAll(getPostBoltAmount(posts.size(), straps.size(),order.getId()));
-        itemEntryList.addAll(posts);
-        itemEntryList.addAll(straps);
-        itemEntryList.addAll(rafters);
-        order.setDbPrice(price*1.20f, connectionPool);
-
-        for (ItemEntry items : itemEntryList) {
-            ItemListFacade.addItemList(items,connectionPool);
-        }
         List<CompleteProduct> completeProducts = ItemListFacade.getCompletProduct(order, connectionPool);
+        if(completeProducts.size() == 0) {
 
+            List<ItemEntry> itemEntryList = new ArrayList<>();
+            List<ItemEntry> posts = getPostAmount(width, length, order.getId());
+            List<ItemEntry> straps = getStrapAmount(length, order.getId());
+            itemEntryList.addAll(getSternFrontAndBackAmount(width, order.getId()));
+            itemEntryList.addAll(getSideSternAmount(length, order.getId()));
+            List<ItemEntry> rafters = getRaftersAmount(width, length, order.getId());
+            itemEntryList.addAll(getRoofAmount(width, length, order.getId()));
+            itemEntryList.addAll(getScrewsAmount(order.getId()));
+            itemEntryList.addAll(getBracketAmount(rafters.size(), order.getId()));
+            itemEntryList.addAll(getBracketScrewsAmount(rafters.size(), order.getId()));
+            itemEntryList.addAll(getHollowtiesAmount(width, length, order.getId()));
+            itemEntryList.addAll(getPostBoltAmount(posts.size(), straps.size(), order.getId()));
+            itemEntryList.addAll(posts);
+            itemEntryList.addAll(straps);
+            itemEntryList.addAll(rafters);
+            order.setDbPrice(price * 1.20f, connectionPool);
+
+            for (ItemEntry items : itemEntryList) {
+                ItemListFacade.addItemList(items, connectionPool);
+            }
+            completeProducts = ItemListFacade.getCompletProduct(order, connectionPool);
+        }
         return completeProducts;
     }
 
