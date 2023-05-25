@@ -64,8 +64,11 @@ public class ItemListMapper {
                     String unitString = rs.getString("unit");
                     Unit unit = Unit.valueOf(unitString);
                     int amount = rs.getInt("amount");
+                    int productVariantId = rs.getInt("product_variant_id");
+                    int productId = rs.getInt("product_id");
 
-                    completeProducts.add(new CompleteProduct(name, length, amount, unit, description));
+
+                    completeProducts.add(new CompleteProduct(name, length, amount, unit, description,productVariantId, productId));
 
                 }
             }

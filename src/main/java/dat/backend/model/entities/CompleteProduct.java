@@ -7,13 +7,17 @@ public class CompleteProduct {
     int amount;
     Unit unit;
     String description;
+    int productVariantId;
+    int productId;
 
-    public CompleteProduct(String name, float length, int amount, Unit unit, String description) {
+    public CompleteProduct(String name, float length, int amount, Unit unit, String description, int productVariantId, int productId) {
         this.name = name;
         this.length = length;
         this.amount = amount;
         this.unit = unit;
         this.description = description;
+        this.productVariantId = productVariantId;
+        this.productId = productId;
     }
 
     public String getName() {
@@ -54,5 +58,15 @@ public class CompleteProduct {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getProductVariantId()
+    {
+        return productVariantId;
+    }
+
+    public int getProductId()
+    {
+        return productId;
     }
 }
