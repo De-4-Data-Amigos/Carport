@@ -25,7 +25,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("register.jsp");
     }
 
     @Override
