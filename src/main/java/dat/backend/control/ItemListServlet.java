@@ -7,7 +7,7 @@ import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
 import dat.backend.model.services.CarportBuilderHelper;
-import dat.backend.model.services.CsvHelper;
+import dat.backend.model.services.DownloadHelper;
 import dat.backend.model.services.ThreeDBuilder;
 
 import javax.servlet.*;
@@ -33,11 +33,13 @@ public class ItemListServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if(action.equalsIgnoreCase("download")){
-            String csv = CsvHelper.convertItemListToCSV(itemList);
-            CsvHelper.sendDownloadCSVFileFromText(csv, response);
+            String csv = DownloadHelper.convertItemListToCSV(itemList);
+            DownloadHelper.sendDownloadCSVFileFromText(csv, response);
         }
         if(action.equalsIgnoreCase("model")){
-            // send download of 3d model to client.
+            if(itemList != null){
+                DownloadHelper.sendDownloadSTLFileFromBytes(stlModelData, response);
+            }
         }
 
     }
@@ -75,7 +77,7 @@ public class ItemListServlet extends HttpServlet {
                 order = OrderFacade.getOrderById(orderID, connectionPool);
             }
             itemList = CarportBuilderHelper.generateItemList(width, length, order);
-            //stlModelData = ThreeDBuilder.getModel(width, length, itemList);
+            stlModelData = ThreeDBuilder.getModel(width, length, itemList, connectionPool);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);

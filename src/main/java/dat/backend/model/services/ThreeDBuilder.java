@@ -29,7 +29,6 @@ public class ThreeDBuilder
         String file = path.toString();
         Geometry3D carport = makeCarport(width, length, productList, connectionPool);
         csg.saveSTL(file, carport);
-        System.out.println(path);
         byte[] data = Files.readAllBytes(path);
         Files.deleteIfExists(path);
         return data;
@@ -43,9 +42,6 @@ public class ThreeDBuilder
         ProductVariant sternSideVariant = null;
         ProductVariant raftersVariant = null;
         int postAmount = 0;
-        int strapAmount = 0;
-        int sternFNBAmount = 0;
-        int sternSideAmount = 0;
         int raftersAmount = 0;
 
 
@@ -53,11 +49,9 @@ public class ThreeDBuilder
             switch (p.getProductId()){
                 case 1: // stern front & back id
                     sternFNBVariant = ProductFacade.getProductVariantById(p.getProductVariantId(), connectionPool);
-                    sternFNBAmount = p.getAmount();
                     break;
                 case 3: // stern side id
                     sternSideVariant = ProductFacade.getProductVariantById(p.getProductVariantId(), connectionPool);
-                    sternSideAmount = p.getAmount();
                     break;
                 case 4: // post id
                     postVariant = ProductFacade.getProductVariantById(p.getProductVariantId(), connectionPool);
@@ -65,7 +59,6 @@ public class ThreeDBuilder
                     break;
                 case 5: // strap id
                     strapVariant = ProductFacade.getProductVariantById(p.getProductVariantId(), connectionPool);
-                    strapAmount = p.getAmount();
                     break;
                 case 6: // rafters id
                     raftersVariant = ProductFacade.getProductVariantById(p.getProductVariantId(), connectionPool);
@@ -149,7 +142,7 @@ public class ThreeDBuilder
         csg = JavaCSGFactory.createDefault();
         ConnectionPool connectionPool = new ConnectionPool();
         try {
-            Orders testOrder = OrderFacade.getOrderById(19, connectionPool);
+            Orders testOrder = OrderFacade.getOrderById(39, connectionPool);
             List<CompleteProduct> products = ItemListFacade.getCompletProduct(testOrder, connectionPool);
             Geometry3D carportTest = makeCarport(testOrder.getWidth(), testOrder.getLength(), products, connectionPool);
             csg.view(carportTest);
