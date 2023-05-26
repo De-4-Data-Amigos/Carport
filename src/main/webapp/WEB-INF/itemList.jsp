@@ -47,8 +47,8 @@
                 <tr>
                     <td class="text-start align-middle"> ${item.name}</td>
                     <td class="text-center align-middle"> ${item.length}</td>
-                    <td class="text-center align-middle">${item.amount}</td>
                     <td class="text-center align-middle">${item.unit}</td>
+                    <td class="text-center align-middle">${item.amount}</td>
                     <td class="text-end align-middle">${item.description}</td>
 
 
