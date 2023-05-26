@@ -27,12 +27,12 @@ package dat.backend;
  * @see dat.backend.model.exceptions
  *
  *
- * - persistence-package: Indeholder mapperklasser, der håndterer kommunikationen med databasen og udfører CRUD-operationer på entiteterne. Disse klasser bruger JDBC til at interagere med databasen
+ * - persistence-package: Indeholder mapperklasser, der håndterer kommunikationen med databasen og udfører CRUD-operationer med entiteterne. Disse klasser bruger JDBC til at interagere med databasen
  *  @see dat.backend.model.persistence
  *
  *
  * - services-package: Indeholder hjælpeklasser og services, der udfører forskellige opgaver i systemet.
- *  Dette inkluderer en CarportBuilderHelper-klasse, der beregner carportdimensioner baseret på en stykliste, en CsvHelper-klasse, der hjælper med at konvertere data til CSV-filer, og en RegisterHelper-klasse, der hjælper med at generere og validere hashede adgangskoder for at håndtere sikkerhed ved adgangskoder.
+ *  Dette inkluderer en CarportBuilderHelper-klasse, der beregner stykliste baseret på en carportdimensioner, en CsvHelper-klasse, der hjælper med at konvertere data til CSV-filer, og en RegisterHelper-klasse, der hjælper med at generere og validere hashede adgangskoder for at håndtere sikkerhed ved adgangskoder.
  * @see dat.backend.model.services
  *
  *
