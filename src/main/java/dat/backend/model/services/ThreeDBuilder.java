@@ -74,13 +74,13 @@ public class ThreeDBuilder
             }
         }
         Geometry3D carport = createBox(0,0,0);
-        Geometry3D posts = makePosts(carportWidth, carportLength, postVariant, postAmount);
+        Geometry3D posts = makePosts(carportWidth, carportLength, strapVariant.getHeight(), postVariant, postAmount);
         Geometry3D straps = makeStraps(carportWidth,carportLength, raftersVariant.getWidth(), strapVariant);
         Geometry3D sternsFrontAndBack = makeSternsFNB(carportWidth, carportLength, sternFNBVariant);
         Geometry3D sternsSide = makeSternsSide(carportWidth, carportLength, sternSideVariant);
         Geometry3D rafters = makeRafters(carportWidth, carportLength, raftersVariant, raftersAmount);
         Geometry3D roof = makeRoof(carportWidth, carportLength);
-        carport = csg.union3D(rafters, roof,sternsSide,sternsFrontAndBack,straps);
+        carport = csg.union3D(rafters, roof,sternsSide,sternsFrontAndBack,straps, posts);
         return carport;
     }
 
@@ -118,14 +118,25 @@ public class ThreeDBuilder
 
     private static Geometry3D makeStraps(int carportWidth, int carportLength,float height, ProductVariant strapVariant)
     {
-        Geometry3D StrapA = csg.translate3DX(carportWidth/2f-15).transform(createBox(strapVariant.getHeight(), carportLength, strapVariant.getWidth()));
-        Geometry3D StrapB = csg.translate3DX(-(carportWidth/2f)+15).transform(createBox(strapVariant.getHeight(), carportLength, strapVariant.getWidth()));
+        Geometry3D StrapA = csg.translate3DX(carportWidth/2f-15 + (strapVariant.getHeight()/2)).transform(createBox(strapVariant.getHeight(), carportLength, strapVariant.getWidth()));
+        Geometry3D StrapB = csg.translate3DX(-(carportWidth/2f)+15 - (strapVariant.getHeight()/2)).transform(createBox(strapVariant.getHeight(), carportLength, strapVariant.getWidth()));
         return csg.translate3D(0, carportLength/2f, 300-strapVariant.getWidth()/2-height).transform(csg.union3D(StrapA,StrapB));
     }
 
-    private static Geometry3D makePosts(int carportWidth, int carportLength, ProductVariant postVariant, int postAmount)
+    private static Geometry3D makePosts(int carportWidth, int carportLength, float strapWidth, ProductVariant postVariant, int postAmount)
     {
-        return null;
+        Geometry3D posts = createBox(0,0,0);
+        Geometry3D postAA = csg.translate3D(carportWidth/2f-15-strapWidth/2,100 + postVariant.getWidth()/2, 0).transform(createBox(postVariant.getWidth(), postVariant.getHeight(), postVariant.getLength()));
+        Geometry3D postBA = csg.translate3D(-(carportWidth/2f)+15+strapWidth/2,100 + postVariant.getWidth()/2, 0).transform(createBox(postVariant.getWidth(), postVariant.getHeight(), postVariant.getLength()));
+        Geometry3D postBB = csg.translate3D(-(carportWidth/2f)+15+strapWidth/2,carportLength - 100 - postVariant.getWidth()/2, 0).transform(createBox(postVariant.getWidth(), postVariant.getHeight(), postVariant.getLength()));
+        Geometry3D postAB = csg.translate3D(carportWidth/2f-15-strapWidth/2,carportLength - 100 - postVariant.getWidth()/2, 0).transform(createBox(postVariant.getWidth(), postVariant.getHeight(), postVariant.getLength()));
+        float postDistance = (carportLength-200)/(float)((postAmount-4)/2+1);
+        for (int i = 1; i < (postAmount-4)/2+1; i++) {
+            Geometry3D tempPost0 = csg.translate3D(carportWidth/2f-15-strapWidth/2,postDistance*i + postVariant.getWidth()/2+100, 0).transform(createBox(postVariant.getWidth(), postVariant.getHeight(), postVariant.getLength()));
+            Geometry3D tempPost1 = csg.translate3D(-(carportWidth/2f)+15+strapWidth/2,postDistance*i + postVariant.getWidth()/2+100, 0).transform(createBox(postVariant.getWidth(), postVariant.getHeight(), postVariant.getLength()));
+            posts = csg.union3D(posts, tempPost0,tempPost1);
+        }
+        return csg.translate3DZ(postVariant.getLength()/2f).transform(csg.union3D(posts,postAA, postBA, postBB, postAB));
     }
 
     private static Geometry3D createBox(double width, double length, double height){
@@ -138,7 +149,7 @@ public class ThreeDBuilder
         csg = JavaCSGFactory.createDefault();
         ConnectionPool connectionPool = new ConnectionPool();
         try {
-            Orders testOrder = OrderFacade.getOrderById(39, connectionPool);
+            Orders testOrder = OrderFacade.getOrderById(19, connectionPool);
             List<CompleteProduct> products = ItemListFacade.getCompletProduct(testOrder, connectionPool);
             Geometry3D carportTest = makeCarport(testOrder.getWidth(), testOrder.getLength(), products, connectionPool);
             csg.view(carportTest);
