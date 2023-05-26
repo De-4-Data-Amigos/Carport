@@ -58,6 +58,7 @@
         </table>
         <form method="get" action="itemlist">
             <button type="submit" class="btn btn-primary" name="action" value="download">Download CSV</button>
+            <button type="submit" class="btn btn-primary" name="action" value="model">Download STL</button>
         </form>
 
 

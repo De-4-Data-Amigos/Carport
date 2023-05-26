@@ -169,7 +169,7 @@ public class CarportBuilderHelper {
     public static List<ItemEntry> getSideSternAmount(int length, int orderId) {
         float pricePrUnit = 0.37f;
         int amount = 2;
-        int lengthTmp = length * 2;
+        int lengthTmp = length * 2 - amount * 540;
 
         while (lengthTmp > 540) {
             amount += 1;

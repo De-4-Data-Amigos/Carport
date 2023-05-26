@@ -1,9 +1,6 @@
 package dat.backend.model.persistence;
 
-import dat.backend.model.entities.Product;
-import dat.backend.model.entities.ProductAndProductVariant;
-import dat.backend.model.entities.ProductType;
-import dat.backend.model.entities.Unit;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.util.List;
@@ -18,7 +15,7 @@ public class ProductFacade {
     }
 
 
-        public static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
+    public static void removeProductList(int id, ConnectionPool connectionPool) throws DatabaseException {
         ProductMapper.removeProductList(id, connectionPool);
     }
 
@@ -40,5 +37,9 @@ public class ProductFacade {
 
     public static void editProductVariant(float height, float width, float length, int productId, int id, ConnectionPool connectionPool) throws DatabaseException {
         ProductMapper.editProductVariant(height, width, length, productId, id, connectionPool);
+    }
+    public static ProductVariant getProductVariantById(int productVaraintId, ConnectionPool connectionPool) throws DatabaseException
+    {
+        return ProductMapper.getProductVariantById(productVaraintId, connectionPool);
     }
 }

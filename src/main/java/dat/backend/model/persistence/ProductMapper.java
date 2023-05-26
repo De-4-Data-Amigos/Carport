@@ -196,4 +196,29 @@ public class ProductMapper {
         }
         return productVariantId;
     }
+
+    public static ProductVariant getProductVariantById(int productVaraintId, ConnectionPool connectionPool) throws DatabaseException
+    {
+        String sql = "SELECT * FROM product_variant where id = ?;";
+
+        ProductVariant productVariant = null;
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1,productVaraintId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int productId = rs.getInt("product_id");
+                    float length = rs.getFloat("length");
+                    float width = rs.getFloat("width");
+                    float height = rs.getFloat("height");
+                    productVariant = new ProductVariant(productVaraintId,productId, length, width, height);
+                    return productVariant;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
+        }
+        return productVariant;
+    }
 }
