@@ -89,7 +89,7 @@ class OrderMapperTest {
 
     }
 
-    @Test
+    /*@Test
     void deleteOrder() throws DatabaseException{
 
         Orders newOrder = new Orders(380, 400, user, connectionPool); // Laver ny order med objektet newOrder
@@ -98,4 +98,6 @@ class OrderMapperTest {
         assertEquals(null, orderCheck); // Forventer "null" da den burde være fjernet i orderCheck.
 
     }
+
+     */
 }

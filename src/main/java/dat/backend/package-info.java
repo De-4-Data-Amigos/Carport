@@ -32,7 +32,9 @@ package dat.backend;
  *
  *
  * - services-package: Indeholder hjælpeklasser og services, der udfører forskellige opgaver i systemet.
- *  Dette inkluderer en CarportBuilderHelper-klasse, der beregner stykliste baseret på en carportdimensioner, en CsvHelper-klasse, der hjælper med at konvertere data til CSV-filer, og en RegisterHelper-klasse, der hjælper med at generere og validere hashede adgangskoder for at håndtere sikkerhed ved adgangskoder.
+ *  Dette holder en CarportBuilderHelper-klasse, der beregner stykliste baseret på en carportdimensioner,
+ *  en DownloadHelper-klasse, der hjælper med at konvertere data til CSV-filer, en ThreeDBuilder som tager en stykeliste laver den om til 3D print,
+ *  og en RegisterHelper-klasse, der hjælper med at generere og validere hashede adgangskoder for at håndtere sikkerhed ved adgangskoder.
  * @see dat.backend.model.services
  *
  *

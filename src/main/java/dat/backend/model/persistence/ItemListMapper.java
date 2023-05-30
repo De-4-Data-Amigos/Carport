@@ -30,24 +30,6 @@ public class ItemListMapper {
 
     }
 
-    protected static void addItemList(int orderId, int productVariantId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO itemlist (order_id, product_variant_id) values (?,?);";
-
-        try (Connection connection = connectionPool.getConnection()) {
-
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, orderId);
-                ps.setInt(2, productVariantId);
-                int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 0) {
-                    throw new DatabaseException("ItemEntry could not be inserted into the database");
-                }
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
-        }
-
-    }
 
     protected static List<CompleteProduct> getCompletProduct(Orders order, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT il.id, order_id, product_variant_id, product_id, height, width, length, product.name, description, price_pr_unit, unit, type, count(*) as amount FROM itemlist as il INNER JOIN product_variant as pvar on il.product_variant_id = pvar.id INNER JOIN product as product on pvar.product_id = product.id where order_id = ? group by product_variant_id;";

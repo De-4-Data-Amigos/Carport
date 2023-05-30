@@ -28,7 +28,8 @@
     <jsp:body>
 
         <div class="container">
-            <h1>Stykliste</h1>
+            <h1>Tak for dit køb!</h1>
+            <p>Herunder kan du se en skræddersyet stykliste til netop din carport: </p>
         </div>
 
         <table class="table table-striped mt-4">
