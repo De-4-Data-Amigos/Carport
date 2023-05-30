@@ -13,7 +13,7 @@ Java vil formentlig også fungere, men vi har kun testet med version 19.
 Brug version 9.x
 
 ## Deployment på Droplet
-T.B.D.
+[http://134.122.67.209:8080/Carport](http://134.122.67.209:8080/Carport)
 
 ## Du skal gøre følgende for at få webapplikationen i luften:
 
