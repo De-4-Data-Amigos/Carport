@@ -35,35 +35,6 @@ public class OrderMapper {
     }
 
 
-    protected static List<Orders> getAllOrders(ConnectionPool connectionPool) throws DatabaseException {
-
-        String sql = "select * from orders;";
-
-        List<Orders> orderList = new ArrayList<>();
-
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    int user_id = rs.getInt("user_id");
-                    Timestamp timestamp = rs.getTimestamp("timestamp");
-                    float price = rs.getFloat("price");
-                    int length = rs.getInt("length");
-                   int width = rs.getInt("width");
-
-
-                    Orders order = new Orders(id, user_id, timestamp, price, length, width);
-                    orderList.add(order);
-                }
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException(e, "Fejl i tilgangen til databasen");
-        }
-        return orderList;
-    }
-
-
     protected static void removeOrderById(int id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "DELETE FROM orders WHERE id = ?;";
 

@@ -37,7 +37,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
-                    <!-- dobbelt id navbar? -->
+
                     <div class="navbar-nav">
                         <c:if test="${sessionScope.user != null }">
                             <a class="nav-item nav-link"
@@ -69,7 +69,7 @@
                     <!-- target="_blank" betyder at den vil åbne siden på en ny fane-->
                 </div>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                    <!-- dobbelt id navbar? -->
+                   
                     <div class="navbar-nav d-flex justify-content-between">
                         <c:if test="${sessionScope.user == null }">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>

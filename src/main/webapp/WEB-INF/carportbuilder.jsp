@@ -6,7 +6,7 @@
 <t:pagetemplate>
     <jsp:attribute name="header">
 
-              Bestil Quick-Byg tilbud - carport med fladt tag
+
 
        </jsp:attribute>
 
@@ -16,15 +16,23 @@
 
     <jsp:body>
 
-<p>  Med et specialudviklet computerprogram kan vi lynhurtigt beregne prisen og udskrive en skitsetegning på en carport indenfor vores standardprogram.
-    Tilbud og skitsetegning fremsendes med post hurtigst muligt.
-    Ved bestilling medfølger standardbyggevejledning.
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <h3 class="text-center"> <b>Bestil Quick-Byg tilbud - carport med fladt tag</b></h3><br>
+                    <p class="text-center">
+                        Med et specialudviklet computerprogram kan vi lynhurtigt beregne prisen og udskrive en skitsetegning på en carport indenfor vores standardprogram.
+                        Tilbud og skitsetegning fremsendes med post hurtigst muligt.
+                        Ved bestilling medfølger standardbyggevejledning.
+                        Udfyld formularen omhyggeligt og klik på "Bestil tilbud".
+                        Felter markeret med * SKAL udfyldes!
+                    </p>
 
-    Udfyld formularen omhyggeligt og klik på "Bestil tilbud".
-    Felter markeret med * SKAL udfyldes!</p>
-
-        <p class="d-inline"><em> Carport med fladt tag:</em></p><br><br>
-
+                </div>
+            </div>
+        </div>
+<br>
+        <br>
         <div style="display: flex; justify-content: center;">
             <div><form method="get" action="carportbuilder">
 
