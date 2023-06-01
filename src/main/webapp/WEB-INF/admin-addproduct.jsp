@@ -19,6 +19,7 @@
     <jsp:body>
 
         <div class="container">
+            <form method="post" action="adminAddProduct">
             <h1>Tilføj produkt</h1>
             <div class="text-end mt-4">
                 <a href="adminhub" class="btn btn-primary">Tilbage</a>
