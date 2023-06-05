@@ -43,6 +43,7 @@
                 <th class="text-center">Produkt Id</th>
                 <th class="text-center">Længde</th>
                 <th class="text-end">Bredde</th>
+                <th class="text-end">Højde</th>
             </tr>
             </thead>
             <tbody>
@@ -57,6 +58,7 @@
                     <td class="text-center align-middle">${product.productId}</td>
                     <td class="text-center align-middle">${product.length}</td>
                     <td class="text-end align-middle">${product.width}</td>
+                    <td class="text-end align-middle">${product.height}</td>
 
                     <td class="text-end align-middle">
                         <div class="d-flex justify-content-start">
