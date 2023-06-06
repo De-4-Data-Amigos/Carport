@@ -25,7 +25,7 @@ public class RemoveAdminProductList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+        /*request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             if (user.getRole().equalsIgnoreCase("admin")) {
@@ -45,6 +45,8 @@ public class RemoveAdminProductList extends HttpServlet {
 
         request.setAttribute("errormessage", "Du er ikke en admin");
         request.getRequestDispatcher("error.jsp").forward(request, response);
+
+        */
 
     }
 
