@@ -30,6 +30,7 @@ public class Checkout extends HttpServlet {
      * @throws IOException
      */
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

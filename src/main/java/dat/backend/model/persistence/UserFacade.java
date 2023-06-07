@@ -8,6 +8,7 @@ public class UserFacade {
         return UserMapper.login(username, password, connectionPool);
     }
 
+    //Kalder createUser på userMapperen
     public static User createUser(String email, String password, String firstname, String lastname, int phonenumber, ConnectionPool connectionPool) throws DatabaseException {
         return UserMapper.createUser(email, password, firstname, lastname, phonenumber, connectionPool);
     }

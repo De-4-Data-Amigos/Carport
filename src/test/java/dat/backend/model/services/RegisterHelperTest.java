@@ -9,7 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RegisterHelperTest {
 
-
+    //Testen kan holdes op imod hash beregner ude fra
+    //source: https://xorbin.com/tools/sha256-hash-calculator
+    //
         @Test
         public void testHashPassword() {
             String password = "123456";
